@@ -1,0 +1,19 @@
+<section class="dark contact" id="contact">
+  <div class="wrap" style="padding-top:88px;padding-bottom:64px">
+    <div class="kicker">05 / contact</div>
+    <h2 data-contact-headline>Need a design system that ships in weeks? Let's talk.</h2>
+    <p>Permanent, contract, or leadership — open to remote and relocation across the UK and Ireland.</p>
+    <div class="cta-row">
+      <a class="btn btn--green" href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <a class="ghost" href="{{ site.linkedin }}" target="_blank" rel="noopener">linkedin &nbsp;&nearr;</a>
+      <a class="ghost" href="{{ site.url }}" target="_blank" rel="noopener">dan.danow.ski &nbsp;&nearr;</a>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var h = ["Need a design system that ships in weeks? Let's talk.","Got a design system that needs untangling?","Scaling a system past what one person can hold?","Building a system and want a second pair of hands?","Need the spec and the code to stop drifting apart?","Ready to make your design system load-bearing?","Tokens, governance, hand-off \u2014 let's talk.","Need a system your team can actually ship against?","Have a token architecture that's fighting your team?"];
+    var el = document.querySelector('[data-contact-headline]');
+    if (el) { el.textContent = h[Math.floor(Math.random() * h.length)]; }
+  })();
+  </script>
+</section>

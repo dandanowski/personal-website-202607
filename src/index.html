@@ -1,0 +1,133 @@
+---
+layout: layouts/base.liquid
+title: Design systems, built from scratch in weeks
+description: Dan Danowski — senior product designer specialising in production design systems, token architecture, and AI-ready pipelines.
+---
+<section class="rule-bottom hero">
+  <div class="grid-bg"></div>
+  <div class="wrap inner">
+    <div>
+      <div class="eyebrow">[ 00 ] &nbsp;senior product designer · design systems · on the web since 2000</div>
+      <h1>I build production design systems from scratch — token architecture, Figma libraries, documentation, and AI-ready pipelines — in weeks, not months.</h1>
+      <p class="lede">Then I hand them off, so your team ships against them without me.</p>
+      <div class="cta-row">
+        <a class="btn btn--solid" href="#work">view the work &nbsp;&rarr;</a>
+        <a class="btn btn--ghost" href="#contact">get in touch</a>
+      </div>
+    </div>
+    <div class="tokencard">
+      <div class="tc-head"><span>tokens.json</span><span>3 tiers</span></div>
+      <div style="padding:6px 0">
+        <div class="tc-group">PRIMITIVE</div>
+        <div class="tc-row"><span class="sw" style="background:#2E51FF"></span><span>--blue-600</span><span class="hex">#2E51FF</span></div>
+        <div class="tc-div"></div>
+        <div class="tc-group">SEMANTIC</div>
+        <div class="tc-row"><span style="color:var(--accent)">--color-accent</span><span class="arr">&rarr;</span><span class="hex">--blue-600</span></div>
+        <div class="tc-div"></div>
+        <div class="tc-group">COMPONENT</div>
+        <div class="tc-row" style="padding-bottom:14px"><span>--button-bg</span><span class="arr">&rarr;</span><span class="hex">--color-accent</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rule-bottom" id="capabilities">
+  <div class="wrap" style="padding-top:78px;padding-bottom:30px">
+    <div class="kicker">01 / what I do</div>
+    <h2 class="section-h">Three things I'm hired for</h2>
+  </div>
+  <div class="wrap" style="padding-bottom:64px">
+    <div class="pillars">
+      <div class="pillar"><div class="n">01</div><h3>Machine-readable architecture</h3><p>Token naming, prop conventions, and documentation structured so AI prototyping tools can generate against the system accurately — not just a Figma library, but infrastructure that serves human designers and automated pipelines alike.</p></div>
+      <div class="pillar"><div class="n">02</div><h3>Governance at scale</h3><p>Contribution frameworks, adoption metrics, and deprecation processes that keep a system coherent across 60 brands or 150+ products. The hard part isn't building components — it's keeping them reliable as the organisation ships against them.</p></div>
+      <div class="pillar"><div class="n">03</div><h3>Design-to-code pipeline</h3><p>StyleDictionary, Figma Variables, CSS custom properties, W3C DTCG tokens — bidirectional sync between design and engineering. A custom Figma plugin built with Claude that automated token transforms across Figma, code, and docs at once.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="rule-bottom" id="work">
+  <div class="wrap" style="padding-top:78px;padding-bottom:8px">
+    <div class="kicker">02 / selected work</div>
+    <h2 class="section-h" style="max-width:24ch">Design systems, built and scaled at three different scales</h2>
+    <p style="font-size:16px;color:var(--mute);max-width:60ch;margin:14px 0 38px;line-height:1.55">From a from-zero startup build to 60 enterprise brands to 150+ products across five tech stacks — the same question every time: what makes this reliable for everyone who ships against it?</p>
+  </div>
+  <div class="wrap" style="padding-bottom:70px">
+    {% for cs in collections.caseStudies %}{% if cs.data.group == "ds" %}<a class="work-row" href="{{ cs.url }}">
+      <div class="idx">{{ cs.data.card.n }}</div>
+      <div>
+        <div class="k">{{ cs.data.card.kicker }}</div>
+        <h3>{{ cs.data.card.title }}</h3>
+        <p>{{ cs.data.card.blurb }}</p>
+        <span class="metric">{{ cs.data.card.metric }}</span>
+      </div>
+      <div class="right">
+        <div class="role">{{ cs.data.card.role }}</div>
+        <div class="go">view case &nbsp;&rarr;</div>
+      </div>
+    </a>{% endif %}{% endfor %}
+    <div style="border-top:1px solid var(--line2)"></div>
+  </div>
+</section>
+
+<section class="rule-bottom band-tint">
+  <div class="wrap" style="padding-top:72px;padding-bottom:18px">
+    <div class="kicker">03 / product design craft</div>
+    <h2 class="section-h">Not design-system cases — product problems, solved with method</h2>
+    <p style="font-size:15px;color:var(--mute);max-width:58ch;margin:0 0 34px;line-height:1.55">Supporting evidence that the systems work is backed by hands-on product design and front-end delivery.</p>
+  </div>
+  <div class="wrap" style="padding-bottom:72px">
+    <div class="craft-grid">
+      {% for cs in collections.caseStudies %}{% if cs.data.group == "craft" %}<a class="craft-card" href="{{ cs.url }}">
+        <div class="top"><span>{{ cs.data.card.n }}</span><span>view &nbsp;&rarr;</span></div>
+        {% if cs.fileSlug == "northwest-vipers" %}<div class="card-teaser"><figure style="margin:0"><img src="/uploads/vipers-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--mute);margin-top:5px">BEFORE</figcaption></figure><figure style="margin:0"><img src="/uploads/vipers-new-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--accent);margin-top:5px">AFTER</figcaption></figure></div>{% endif %}
+        {% if cs.fileSlug == "nested-teams" %}<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px">
+          <div>
+            <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;color:var(--mute);margin-bottom:6px">FLAT</div>
+            <div style="border:1px solid var(--line2);border-radius:5px;background:#fff;height:148px;padding:11px 12px;overflow:hidden">
+              <div style="display:flex;align-items:center;gap:7px;padding:4px 0"><span style="width:11px;height:11px;border-radius:50%;background:rgba(34,34,34,0.16)"></span><span style="width:70px;height:6px;border-radius:3px;background:rgba(34,34,34,0.26)"></span></div>
+              <div style="display:flex;align-items:center;gap:7px;padding:4px 0"><span style="width:11px;height:11px;border-radius:50%;background:rgba(34,34,34,0.16)"></span><span style="width:92px;height:6px;border-radius:3px;background:rgba(34,34,34,0.26)"></span></div>
+              <div style="display:flex;align-items:center;gap:7px;padding:4px 0"><span style="width:11px;height:11px;border-radius:50%;background:rgba(34,34,34,0.16)"></span><span style="width:58px;height:6px;border-radius:3px;background:rgba(34,34,34,0.26)"></span></div>
+              <div style="display:flex;align-items:center;gap:7px;padding:4px 0"><span style="width:11px;height:11px;border-radius:50%;background:rgba(34,34,34,0.16)"></span><span style="width:84px;height:6px;border-radius:3px;background:rgba(34,34,34,0.26)"></span></div>
+              <div style="display:flex;align-items:center;gap:7px;padding:4px 0"><span style="width:11px;height:11px;border-radius:50%;background:rgba(34,34,34,0.16)"></span><span style="width:66px;height:6px;border-radius:3px;background:rgba(34,34,34,0.26)"></span></div>
+              <div style="display:flex;align-items:center;gap:7px;padding:4px 0"><span style="width:11px;height:11px;border-radius:50%;background:rgba(34,34,34,0.16)"></span><span style="width:88px;height:6px;border-radius:3px;background:rgba(34,34,34,0.26)"></span></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;color:#138c8c;margin-bottom:6px">NESTED</div>
+            <div style="border:1px solid #138c8c;border-radius:5px;background:#fff;height:148px;padding:11px 12px;overflow:hidden">
+              <div style="display:flex;align-items:center;gap:6px;padding:4px 0"><span style="width:11px;height:9px;border-radius:2px;background:rgba(19,140,140,0.32)"></span><span style="width:80px;height:6px;border-radius:3px;background:rgba(34,34,34,0.28)"></span></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:4px 0;margin-left:15px"><span style="width:11px;height:9px;border-radius:2px;background:rgba(19,140,140,0.32)"></span><span style="width:64px;height:6px;border-radius:3px;background:rgba(34,34,34,0.28)"></span></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:4px 0;margin-left:30px"><span style="width:11px;height:9px;border-radius:2px;background:rgba(19,140,140,0.20)"></span><span style="width:52px;height:6px;border-radius:3px;background:rgba(34,34,34,0.28)"></span></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:4px 0;margin-left:15px"><span style="width:11px;height:9px;border-radius:2px;background:rgba(19,140,140,0.32)"></span><span style="width:72px;height:6px;border-radius:3px;background:rgba(34,34,34,0.28)"></span></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:4px 0;margin-left:30px"><span style="width:11px;height:9px;border-radius:2px;background:rgba(19,140,140,0.20)"></span><span style="width:48px;height:6px;border-radius:3px;background:rgba(34,34,34,0.28)"></span></div>
+            </div>
+          </div>
+        </div>{% endif %}
+        <div class="k" style="font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:0.04em;margin-bottom:10px">{{ cs.data.card.kicker }}</div>
+        <h3>{{ cs.data.card.title }}</h3>
+        <p>{{ cs.data.card.blurb }}</p>
+        <div class="foot">{{ cs.data.card.role }}</div>
+      </a>{% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="rule-bottom" id="about">
+  <div class="wrap about" style="padding-top:78px;padding-bottom:78px">
+    <div>
+      <div class="kicker">04 / about</div>
+      <h2 class="section-h" style="max-width:18ch">Twelve years making design systems load-bearing</h2>
+      <p>I've designed for the web since 2000 — the last twelve years focused on design systems. I've built the design function from scratch at a startup, led the enterprise system at AVEVA across a 20-person UX org, and managed a five-designer team scaling 60 brands at Atolls. I design <em>and</em> write front-end — HTML/CSS, React, Vue, Angular — so the spec and the code never drift apart.</p>
+      <p style="color:var(--mute)">Accessibility (WCAG 2.1) runs through every role. Off the clock I chair and coach an American football club in the northwest of Ireland — governance, budgets, and a website I designed and built myself.</p>
+    </div>
+    <div class="numbers">
+      <div class="nh">by the numbers</div>
+      <div class="nr"><span>designing for the web</span><span>since 2000</span></div>
+      <div class="nr"><span>on design systems</span><span>12 yrs</span></div>
+      <div class="nr"><span>designers led</span><span>up to 15</span></div>
+      <div class="nr"><span>brands scaled</span><span>60+</span></div>
+      <div class="nr"><span>products unified</span><span>150+</span></div>
+      <div class="nr"><span>tech stacks spanned</span><span>5</span></div>
+    </div>
+  </div>
+</section>

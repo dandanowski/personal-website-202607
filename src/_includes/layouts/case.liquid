@@ -1,0 +1,21 @@
+---
+layout: layouts/base.liquid
+---
+<div class="wrap crumb"><a href="/">dan</a> &nbsp;/&nbsp; <a href="/#work">work</a> &nbsp;/&nbsp; <span class="here">{{ short }}</span></div>
+
+<section class="rule-bottom">
+  <div class="wrap" style="padding-top:66px">
+    <div class="case-kicker">{{ kicker }}</div>
+    <h1 class="case-title">{{ title }}</h1>
+    <p class="case-lede">{{ lede }}</p>
+  </div>
+  <div class="wrap">
+    <div class="case-meta">
+      {% for m in meta %}<div><div class="ml">{{ m.label }}</div><div class="mv {{ m.mono }}">{{ m.value }}</div></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<article class="wrap">
+  {{ content }}
+</article>

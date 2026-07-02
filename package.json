@@ -1,0 +1,14 @@
+{
+  "name": "dan-danowski-portfolio",
+  "version": "1.0.0",
+  "description": "Dan Danowski — design systems portfolio. Static 11ty (Eleventy) site, Liquid templates.",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

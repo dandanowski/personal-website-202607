@@ -1,0 +1,39 @@
+---
+layout: layouts/base.liquid
+---
+<div class="wrap crumb"><a href="/">dan</a> &nbsp;/&nbsp; <a href="/writing/">writing</a> &nbsp;/&nbsp; <span class="here">{{ short | default: title }}</span></div>
+
+<header class="rule-bottom">
+  <div class="wrap post-head">
+    <div class="lead-col">
+      <div class="post-tags">{% for t in tags_display %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+      <h1 class="post-title">{{ title }}</h1>
+      <p class="post-sub">{{ subtitle }}</p>
+    </div>
+    <div class="post-metacol">
+      <div><div class="ml">PUBLISHED</div><div class="mv">{{ date | date: "%b %-d, %Y" }}</div></div>
+      <div><div class="ml">READING</div><div class="mv">{{ reading }}</div></div>
+      <div><div class="ml">AUTHOR</div><div class="mv">{{ site.name }}</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap post-layout">
+  <article class="post-article">
+    {{ content }}
+  </article>
+  <aside class="rail">
+    <div>
+      <div class="rl">ON THIS PAGE</div>
+      <nav class="toc">{% for s in toc %}<a href="#{{ s.id }}">{{ s.label }}</a>{% endfor %}</nav>
+    </div>
+    <div>
+      <div class="rl">RELATED READING</div>
+      <nav class="rel">{% for r in related %}<a href="{{ r.url }}">{{ r.title }} &nbsp;&rarr;</a>{% endfor %}</nav>
+    </div>
+    <div>
+      <div class="rl">TAGS</div>
+      <div class="post-tags">{% for t in tags_display %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+    </div>
+  </aside>
+</div>
