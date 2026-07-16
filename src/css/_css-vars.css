@@ -24,7 +24,7 @@
   --theme-component-metric-foreground-main: var(--theme-semantic-foreground-main);
   --theme-component-tag-border-main: var(--theme-semantic-border-main);
   --theme-component-tag-foreground-main: var(--theme-semantic-foreground-muted);
-  --theme-semantic-background-emphasis: var(--primitives-color-blue-0);
+  --theme-semantic-background-emphasis: light-dark(var(--primitives-color-blue-0), rgba(from var(--primitives-color-blue-400) r g b / 0.05));
   --theme-semantic-background-main: light-dark(var(--primitives-color-neutral-100), var(--primitives-color-neutral-900));
   --theme-semantic-background-muted: light-dark(var(--primitives-color-neutral-200), var(--primitives-color-neutral-800));
   --theme-semantic-background-surface: light-dark(var(--primitives-color-neutral-0), var(--primitives-color-neutral-800));
