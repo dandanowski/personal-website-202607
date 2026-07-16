@@ -3,6 +3,8 @@
    Technical / systems aesthetic. Tokens first, then components.
    ============================================================ */
 
+   @import url(./_css-vars.css);
+
 /* ---- reset ---- */
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; }
@@ -13,20 +15,20 @@ html { scroll-behavior: smooth; }
 
 /* ---- tokens ---- */
 :root {
-  --paper:#F4F2EC;
-  --ink:#16181D;
-  --ink-soft:#33363d;
-  --mute:#5E626B;
-  --line:rgba(22,24,29,0.12);
-  --line2:rgba(22,24,29,0.24);
-  --accent:#2E51FF;
-  --dark:#0D0E12;
-  --green:#3FB964;
-  --card:#ffffff;
-  --chip-bg:rgba(22,24,29,0.05);
-  --header-bg:rgba(244,242,236,0.88);
-  --tint:rgba(46,81,255,0.05);
-  --band:#EFEDE6;
+  --paper:var(--theme-semantic-background-main, #F4F2EC);
+  --ink:var(--theme-semantic-foreground-main, #16181D);
+  --ink-soft:var(--theme-semantic-foreground-muted, #33363d);
+  --mute:light-dark(#5E626B, #8B8F98);
+  --line:var(--theme-semantic-border-main, rgba(22,24,29,0.12));
+  --line2:var(--theme-semantic-border-muted, rgba(22,24,29,0.24));
+  --accent:var(--theme-semantic-foreground-emphasis, #2E51FF);
+  --dark:var(--theme-component-footer-background-main, #0D0E12);
+  --green:var(--theme-component-footer-foreground-emphasis, #3FB964);
+  --card:var(--theme-semantic-background-surface, #ffffff);
+  --chip-bg:light-dark(rgba(22,24,29,0.05), rgba(255,255,255,0.06));
+  --header-bg:light-dark(rgba(244,242,236,0.88), rgba(14,16,20,0.85));
+  --tint:light-dark(rgba(46,81,255,0.05), rgba(125,155,255,0.12));
+  --band:var(--theme-semantic-background-muted, #EFEDE6);
   --wrap:1180px;
 
   --mono:'IBM Plex Mono', ui-monospace, monospace;
@@ -86,7 +88,7 @@ body {
 .cta-row { display: flex; gap: 13px; margin-top: 34px; flex-wrap: wrap; }
 
 /* ---- tokens.json card ---- */
-.tokencard { border: 1px solid var(--line2); border-radius: 6px; background: var(--card); overflow: hidden; box-shadow: 0 20px 50px -28px rgba(22,24,29,0.4); }
+.tokencard { border: 1px solid var(--line2); border-radius: 6px; background: var(--card); overflow: hidden; box-shadow: light-dark(0 20px 50px -28px rgba(22,24,29,0.4), none); }
 .tokencard .tc-head { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 11.5px; color: var(--mute); }
 .tc-group { padding: 11px 16px 4px; font-family: var(--mono); font-size: 11px; color: #8A8E97; letter-spacing: 0.08em; }
 .tc-row { display: flex; align-items: center; gap: 10px; padding: 7px 16px; font-family: var(--mono); font-size: 13px; }
@@ -243,7 +245,13 @@ blockquote.pull p { font-size: clamp(19px,2vw,24px); line-height: 1.4; font-weig
 .post-head { display: grid; grid-template-columns: 1fr 232px; gap: 58px; align-items: end; padding-top: 66px; padding-bottom: 44px; }
 .post-head .lead-col { max-width: 680px; min-width: 0; }
 .post-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
-.tag { font-family: var(--mono); font-size: 11px; color: var(--mute); border: 1px solid var(--line2); border-radius: 3px; padding: 4px 10px; letter-spacing: 0.03em; }
+.tag { font-family: var(--mono); font-size: 11px; color: var(--mute); border: 1px solid var(--line2); border-radius: 3px; padding: 4px 10px; letter-spacing: 0.03em; text-decoration: none; position: relative; z-index: 1; transition: color .15s ease, border-color .15s ease; }
+a.tag:hover { color: var(--accent); border-color: var(--accent); }
+
+/* stretched-link: lets a card/row stay hoverable as a block while a nested
+   element (e.g. a tag chip) remains independently clickable above it */
+.stretched-link { color: inherit; text-decoration: none; }
+.stretched-link::after { content: ""; position: absolute; inset: 0; }
 .post-title { font-size: clamp(32px,5vw,52px); line-height: 1.05; letter-spacing: -0.024em; font-weight: 600; margin: 0; }
 .post-sub { font-size: clamp(18px,2.2vw,22px); line-height: 1.45; color: var(--mute); margin: 18px 0 0; }
 .post-metacol { border-top: 1px solid var(--line2); padding-top: 16px; display: flex; flex-direction: column; gap: 15px; font-family: var(--mono); }
@@ -263,7 +271,7 @@ blockquote.pull p { font-size: clamp(19px,2vw,24px); line-height: 1.4; font-weig
 .post-article blockquote p { font-size: clamp(20px,2.6vw,26px); line-height: 1.4; font-weight: 500; letter-spacing: -0.01em; margin: 0; }
 
 figure.anatomy { margin: 38px 0; }
-.anatomy .card { border: 1px solid var(--line2); border-radius: 8px; background: var(--card); padding: 30px 26px; box-shadow: 0 16px 40px -28px rgba(0,0,0,0.4); }
+.anatomy .card { border: 1px solid var(--line2); border-radius: 8px; background: var(--card); padding: 30px 26px; box-shadow: light-dark(0 16px 40px -28px rgba(0,0,0,0.4), none); }
 .anatomy .ttl { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--mute); margin-bottom: 20px; }
 .anatomy .name { font-family: var(--mono); font-size: clamp(15px,2.4vw,20px); font-weight: 500; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px; margin-bottom: 8px; }
 .anatomy .sep { color: var(--line2); }
@@ -280,7 +288,7 @@ aside.rail .rel a { font-size: 12.5px; line-height: 1.45; color: var(--ink); tex
 aside.rail .rel a:hover { color: var(--accent); }
 
 /* blog index rows */
-.post-row { display: grid; grid-template-columns: 150px 1fr 130px; gap: 26px; align-items: start; padding: 34px 18px; border-top: 1px solid var(--line2); text-decoration: none; color: var(--ink); border-radius: 4px; transition: background .18s ease; }
+.post-row { position: relative; display: grid; grid-template-columns: 150px 1fr 130px; gap: 26px; align-items: start; padding: 34px 18px; border-top: 1px solid var(--line2); text-decoration: none; color: var(--ink); border-radius: 4px; transition: background .18s ease; }
 .post-row:hover { background: rgba(46,81,255,0.045); }
 .post-row .when { font-family: var(--mono); font-size: 12px; color: var(--mute); line-height: 1.6; }
 .post-row .when .rt { color: var(--accent); }
@@ -291,6 +299,13 @@ aside.rail .rel a:hover { color: var(--accent); }
 .draft-row .when { font-family: var(--mono); font-size: 12px; color: var(--mute); }
 .draft-row h2 { font-size: 19px; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 8px; line-height: 1.2; }
 .draft-row .st { text-align: right; font-family: var(--mono); font-size: 11.5px; color: var(--mute); }
+
+/* ---- tags hub ---- */
+.tag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 14px; }
+.tag-card { display: flex; flex-direction: column; gap: 8px; padding: 20px 20px; border: 1px solid var(--line2); border-radius: 5px; text-decoration: none; color: var(--ink); background: var(--card); transition: transform .18s ease, border-color .18s ease; }
+.tag-card:hover { transform: translate(2px,-2px); border-color: var(--accent); }
+.tag-card .tc-name { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--accent); }
+.tag-card .tc-count { font-family: var(--mono); font-size: 11.5px; color: var(--mute); }
 
 .pad-lg { padding-top: 78px; padding-bottom: 64px; }
 
@@ -321,31 +336,13 @@ aside.rail .rel a:hover { color: var(--accent); }
   .hero .inner, .pad-lg { padding-top: 48px; padding-bottom: 40px; }
 }
 
-/* ---- theme toggle ---- */
-.theme-toggle { display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; padding:0; border:1px solid var(--line2); background:transparent; color:var(--ink); border-radius:3px; cursor:pointer; }
-.theme-toggle:hover { border-color: var(--ink); color: var(--accent); }
+/* ---- theme toggle ----
+   Three-way control (auto/light/dark). theme-ls.js sets `color-scheme`
+   on <html>; every token below resolves itself via light-dark(), so no
+   dark-mode override block is needed. */
+.theme-toggle { display:inline-flex; align-items:center; gap:2px; border:1px solid var(--line2); border-radius:3px; padding:2px; }
+.theme-toggle label { display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:2px; color:var(--mute); cursor:pointer; }
+.theme-toggle label:hover { color:var(--ink); }
+.theme-toggle input { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+.theme-toggle label:has(input:checked) { background:var(--chip-bg); color:var(--accent); }
 .theme-toggle svg { width:15px; height:15px; }
-.theme-toggle .moon { display:none; }
-:root[data-theme="dark"] .theme-toggle .sun { display:none; }
-:root[data-theme="dark"] .theme-toggle .moon { display:inline; }
-
-/* ---- dark theme (token override) ---- */
-:root[data-theme="dark"] {
-  --paper:#0E1014;
-  --ink:#ECECE7;
-  --ink-soft:#C7C9CE;
-  --mute:#8B8F98;
-  --line:rgba(255,255,255,0.10);
-  --line2:rgba(255,255,255,0.20);
-  --accent:#7D9BFF;
-  --card:#181A20;
-  --chip-bg:rgba(255,255,255,0.06);
-  --header-bg:rgba(14,16,20,0.85);
-  --tint:rgba(125,155,255,0.12);
-  --band:#121419;
-}
-:root[data-theme="dark"] .dark { background:#07080B; }
-:root[data-theme="dark"] .tokencard,
-:root[data-theme="dark"] .tiers,
-:root[data-theme="dark"] .pipe,
-:root[data-theme="dark"] .anatomy .card { box-shadow:none; }

@@ -1,0 +1,31 @@
+---
+layout: layouts/base.liquid
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: "/tags/{{ tag }}/"
+eleventyComputed:
+  title: "#{{ tag }} — Dan Danowski"
+  description: "Work and writing tagged #{{ tag }}."
+---
+<div class="wrap crumb"><a href="/">dan</a> &nbsp;/&nbsp; <a href="/tags/">tags</a> &nbsp;/&nbsp; <span class="here">#{{ tag }}</span></div>
+
+<section class="rule-bottom">
+  <div class="wrap" style="padding-top:66px;padding-bottom:46px">
+    <div class="kicker">tag</div>
+    <h1 class="section-h" style="font-size:clamp(30px,4.2vw,48px)">#{{ tag }}</h1>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:8px;padding-bottom:60px">
+  {% assign tagged = collections.all | withTopic: tag %}
+  {% for item in tagged %}<a class="post-row" href="{{ item.url }}">
+    <div class="when">{% if item.data.tags contains "case" %}case study{% else %}writing{% endif %}</div>
+    <div>
+      <h2>{{ item.data.title }}</h2>
+      <p>{{ item.data.lede | default: item.data.subtitle }}</p>
+    </div>
+    <div class="go">view &nbsp;&rarr;</div>
+  </a>{% endfor %}
+</section>

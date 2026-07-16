@@ -6,7 +6,7 @@ title: "Naming things is hard"
 subtitle: "The hunt for the perfect design-token naming convention."
 date: 2025-03-31
 reading: "4 min read"
-tags_display: ["#design-tokens", "#naming", "#design-system"]
+topics: ["design-tokens", "naming", "design-system"]
 toc:
   - { id: "s1", label: "Why can't we just call it this?" }
   - { id: "s2", label: "More guidelines than code" }

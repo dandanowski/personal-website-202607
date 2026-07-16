@@ -1,0 +1,121 @@
+/* Generated CSS variables from Figma */
+
+/* Theme */
+
+:root {
+  color-scheme: light dark;
+  --theme-component-button-background-emphasis: var(--primitives-color-green-400);
+  --theme-component-button-background-main: light-dark(var(--primitives-color-neutral-800), var(--primitives-color-neutral-200));
+  --theme-component-button-background-subtle: var(--primitives-color-common-transparent);
+  --theme-component-button-border-emphasis: var(--primitives-color-green-400);
+  --theme-component-button-border-main: var(--theme-semantic-border-main);
+  --theme-component-button-foreground-emphasis: var(--primitives-color-green-800);
+  --theme-component-button-foreground-main: light-dark(var(--primitives-color-neutral-200), var(--primitives-color-neutral-800));
+  --theme-component-button-foreground-subtle: light-dark(var(--primitives-color-neutral-800), var(--primitives-color-neutral-200));
+  --theme-component-card-background-main: var(--theme-semantic-background-surface);
+  --theme-component-card-border-main: var(--theme-semantic-border-main);
+  --theme-component-footer-background-main: var(--primitives-color-neutral-1000);
+  --theme-component-footer-border-muted: var(--theme-semantic-border-muted);
+  --theme-component-footer-foreground-emphasis: var(--primitives-color-green-400);
+  --theme-component-footer-foreground-main: var(--primitives-color-neutral-0);
+  --theme-component-footer-foreground-muted: var(--primitives-color-neutral-400);
+  --theme-component-metric-background-main: light-dark(var(--primitives-color-neutral-200), var(--primitives-color-neutral-800));
+  --theme-component-metric-border-main: var(--theme-semantic-border-muted);
+  --theme-component-metric-foreground-main: var(--theme-semantic-foreground-main);
+  --theme-component-tag-border-main: var(--theme-semantic-border-main);
+  --theme-component-tag-foreground-main: var(--theme-semantic-foreground-muted);
+  --theme-semantic-background-emphasis: var(--primitives-color-blue-0);
+  --theme-semantic-background-main: light-dark(var(--primitives-color-neutral-100), var(--primitives-color-neutral-900));
+  --theme-semantic-background-muted: light-dark(var(--primitives-color-neutral-200), var(--primitives-color-neutral-800));
+  --theme-semantic-background-surface: light-dark(var(--primitives-color-neutral-0), var(--primitives-color-neutral-800));
+  --theme-semantic-border-emphasis: var(--primitives-color-blue-500);
+  --theme-semantic-border-main: light-dark(var(--primitives-color-neutral-400), var(--primitives-color-neutral-700));
+  --theme-semantic-border-muted: light-dark(var(--primitives-color-neutral-300), var(--primitives-color-neutral-700));
+  --theme-semantic-foreground-emphasis: light-dark(var(--primitives-color-blue-500), var(--primitives-color-blue-400));
+  --theme-semantic-foreground-main: light-dark(var(--primitives-color-neutral-800), var(--primitives-color-neutral-200));
+  --theme-semantic-foreground-muted: light-dark(var(--primitives-color-neutral-500), var(--primitives-color-neutral-400));
+  --theme-semantic-spacing-2-xl: var(--primitives-spacing-600);
+  --theme-semantic-spacing-3-xl: var(--primitives-spacing-700);
+  --theme-semantic-spacing-4-xl: var(--primitives-spacing-800);
+  --theme-semantic-spacing-lg: var(--primitives-spacing-400);
+  --theme-semantic-spacing-md: var(--primitives-spacing-300);
+  --theme-semantic-spacing-sm: var(--primitives-spacing-200);
+  --theme-semantic-spacing-xl: var(--primitives-spacing-500);
+  --theme-semantic-spacing-xs: var(--primitives-spacing-100);
+}
+
+/* referenced dependency, not directly selected */
+/* Primitives */
+
+:root {
+  --primitives-color-blue-0: #f2f8ff;
+  --primitives-color-blue-100: #d7f4ff;
+  --primitives-color-blue-1000: #01021e;
+  --primitives-color-blue-200: #b2e2ff;
+  --primitives-color-blue-300: #86c1ff;
+  --primitives-color-blue-400: #5792ff;
+  --primitives-color-blue-500: #2e51ff;
+  --primitives-color-blue-600: #1a2cbb;
+  --primitives-color-blue-700: #0b067f;
+  --primitives-color-blue-800: #050051;
+  --primitives-color-blue-900: #020032;
+  --primitives-color-common-black: #000000;
+  --primitives-color-common-transparent: rgb(0 0 0 / 0);
+  --primitives-color-common-white: #ffffff;
+  --primitives-color-green-0: #f3fbf4;
+  --primitives-color-green-100: #ddfde1;
+  --primitives-color-green-1000: #000901;
+  --primitives-color-green-200: #baf4c4;
+  --primitives-color-green-300: #89de9a;
+  --primitives-color-green-400: #3fb964;
+  --primitives-color-green-500: #268e46;
+  --primitives-color-green-600: #016126;
+  --primitives-color-green-700: #003c0d;
+  --primitives-color-green-800: #002101;
+  --primitives-color-green-900: #001100;
+  --primitives-color-neutral-0: #ffffff;
+  --primitives-color-neutral-100: #faf9f7;
+  --primitives-color-neutral-1000: #07080b;
+  --primitives-color-neutral-200: #f4f2ec;
+  --primitives-color-neutral-300: #c3cdca;
+  --primitives-color-neutral-400: #9aa0ab;
+  --primitives-color-neutral-500: #5e626b;
+  --primitives-color-neutral-600: #4b4e56;
+  --primitives-color-neutral-700: #2b2e34;
+  --primitives-color-neutral-800: #16181d;
+  --primitives-color-neutral-900: #0e1014;
+  --primitives-font-font-family-one: Archivo;
+  --primitives-font-font-size-100: 10;
+  --primitives-font-font-size-200: 11;
+  --primitives-font-font-size-300: 13;
+  --primitives-font-font-size-400: 14;
+  --primitives-font-font-size-500: 16;
+  --primitives-font-font-size-600: 21;
+  --primitives-font-font-size-700: 28;
+  --primitives-font-font-size-800: 38;
+  --primitives-font-font-size-900: 51;
+  --primitives-font-line-height-100: 1.6799999475479126;
+  --primitives-font-line-height-200: 1.6299999952316284;
+  --primitives-font-line-height-300: 1.590000033378601;
+  --primitives-font-line-height-400: 1.5399999618530273;
+  --primitives-font-line-height-500: 1.5;
+  --primitives-font-line-height-600: 1.4600000381469727;
+  --primitives-font-line-height-700: 1.409999966621399;
+  --primitives-font-line-height-800: 1.3700000047683716;
+  --primitives-font-line-height-900: 1.3300000429153442;
+  --primitives-radius-0: 0;
+  --primitives-radius-100: 4;
+  --primitives-radius-200: 8;
+  --primitives-radius-300: 16;
+  --primitives-radius-400: 32;
+  --primitives-radius-full: 9999;
+  --primitives-spacing-100: 4;
+  --primitives-spacing-200: 8;
+  --primitives-spacing-300: 12;
+  --primitives-spacing-400: 16;
+  --primitives-spacing-500: 24;
+  --primitives-spacing-600: 32;
+  --primitives-spacing-700: 48;
+  --primitives-spacing-800: 64;
+  --primitives-spacing-900: 96;
+}

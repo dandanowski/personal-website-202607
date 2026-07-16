@@ -10,21 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="/css/blockframes.css">
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem('theme');
-        if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-        document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {}
-    })();
-  </script>
+  <script src="/assets/js/theme-ls.js"></script>
 </head>
 <body>
   {% include "partials/header.liquid" %}
   <main>{{ content }}</main>
   {% include "partials/contact.liquid" %}
   {% include "partials/footer.liquid" %}
-  <script src="/assets/js/theme.js" defer></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ layout: layouts/base.liquid
 <header class="rule-bottom">
   <div class="wrap post-head">
     <div class="lead-col">
-      <div class="post-tags">{% for t in tags_display %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+      <div class="post-tags">{% for t in topics %}<a class="tag" href="/tags/{{ t }}/">#{{ t }}</a>{% endfor %}</div>
       <h1 class="post-title">{{ title }}</h1>
       <p class="post-sub">{{ subtitle }}</p>
     </div>
@@ -33,7 +33,7 @@ layout: layouts/base.liquid
     </div>
     <div>
       <div class="rl">TAGS</div>
-      <div class="post-tags">{% for t in tags_display %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+      <div class="post-tags">{% for t in topics %}<a class="tag" href="/tags/{{ t }}/">#{{ t }}</a>{% endfor %}</div>
     </div>
   </aside>
 </div>

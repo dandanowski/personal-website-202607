@@ -8,6 +8,7 @@ layout: layouts/base.liquid
     <div class="case-kicker">{{ kicker }}</div>
     <h1 class="case-title">{{ title }}</h1>
     <p class="case-lede">{{ lede }}</p>
+    {% if topics %}<div class="post-tags" style="margin:22px 0 0">{% for t in topics %}<a class="tag" href="/tags/{{ t }}/">#{{ t }}</a>{% endfor %}</div>{% endif %}
   </div>
   <div class="wrap">
     <div class="case-meta">

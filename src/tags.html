@@ -1,0 +1,21 @@
+---
+layout: layouts/base.liquid
+title: Tags — browse work and writing by topic
+description: Every case study and post on the site, organised by topic.
+---
+<section class="rule-bottom">
+  <div class="wrap" style="padding-top:66px;padding-bottom:46px">
+    <div class="kicker">tags</div>
+    <h1 class="section-h" style="font-size:clamp(30px,4.2vw,48px);max-width:18ch">Browse by topic</h1>
+    <p style="font-size:clamp(16px,1.7vw,19px);line-height:1.55;color:var(--mute);max-width:58ch;margin:20px 0 0">Every case study and post, grouped by the themes that run through the work.</p>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:40px;padding-bottom:60px">
+  <div class="tag-grid">
+    {% for t in collections.tagCounts %}<a class="tag-card" href="/tags/{{ t.tag }}/">
+      <span class="tc-name">#{{ t.tag }}</span>
+      <span class="tc-count">{{ t.count }} item{% if t.count != 1 %}s{% endif %}</span>
+    </a>{% endfor %}
+  </div>
+</section>
