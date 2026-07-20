@@ -1,0 +1,16 @@
+---
+layout: layouts/base.liquid
+---
+<div class="wrap crumb"><a href="/">dan</a> &nbsp;/&nbsp; <a href="/lab/">lab</a> &nbsp;/&nbsp; <span class="here">{{ short | default: title }}</span></div>
+
+<header class="rule-bottom">
+  <div class="wrap" style="padding-top:66px;padding-bottom:46px">
+    <div class="kicker">lab experiment</div>
+    <h1 class="section-h" style="font-size:clamp(30px,4.2vw,48px);max-width:20ch">{{ title }}</h1>
+    {% if lede %}<p style="font-size:clamp(16px,1.7vw,19px);line-height:1.55;color:var(--mute);max-width:58ch;margin:20px 0 0">{{ lede }}</p>{% endif %}
+  </div>
+</header>
+
+<article class="wrap" style="padding-top:40px;padding-bottom:60px">
+  {{ content }}
+</article>

@@ -75,7 +75,8 @@
       "Bash(sort -t: -k2)",
       "Bash(uniq -c -f1)",
       "Bash(sort -t: -k1 -n)",
-      "Bash(rm -rf _site /tmp/build.txt)"
+      "Bash(rm -rf _site /tmp/build.txt)",
+      "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)"
     ],
     "additionalDirectories": [
       "/private/tmp"

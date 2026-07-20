@@ -14,6 +14,11 @@ module.exports = function (eleventyConfig) {
     c.getFilteredByTag("post").sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
   );
 
+  // Lab experiments — small self-contained modules, alphabetical by title
+  eleventyConfig.addCollection("labItems", (c) =>
+    c.getFilteredByTag("lab").sort((a, b) => a.data.title.localeCompare(b.data.title))
+  );
+
   // Topic tags: any content item can declare `topics: [...]` in front matter.
   // One sorted, de-duplicated slug list drives the /tags/<slug>/ pagination.
   eleventyConfig.addCollection("tagList", (c) => {
