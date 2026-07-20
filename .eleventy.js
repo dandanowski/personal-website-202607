@@ -9,6 +9,14 @@ module.exports = function (eleventyConfig) {
     c.getFilteredByTag("case").sort((a, b) => a.data.order - b.data.order)
   );
 
+  // Design-system case studies only — used for the homepage's capped preview
+  eleventyConfig.addCollection("dsCaseStudies", (c) =>
+    c
+      .getFilteredByTag("case")
+      .filter((item) => item.data.group === "ds")
+      .sort((a, b) => a.data.order - b.data.order)
+  );
+
   // Blog posts, newest first
   eleventyConfig.addCollection("posts", (c) =>
     c.getFilteredByTag("post").sort((a, b) => new Date(b.data.date) - new Date(a.data.date))

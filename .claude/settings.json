@@ -76,7 +76,9 @@
       "Bash(uniq -c -f1)",
       "Bash(sort -t: -k1 -n)",
       "Bash(rm -rf _site /tmp/build.txt)",
-      "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)"
+      "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)",
+      "Bash(grep -o '<a href=\"/work/\"[^>]*>work</a>' /Users/dan/web/dan.danow.ski/2026.07/_site/work/index.html; grep -o '<a href=\"/work/\">work</a>' /Users/dan/web/dan.danow.ski/2026.07/_site/work/atolls-ds/index.html; rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)",
+      "Bash(grep -c \"work-row\" /Users/dan/web/dan.danow.ski/2026.07/_site/index.html; grep -o 'view all work[^<]*</a>' /Users/dan/web/dan.danow.ski/2026.07/_site/index.html; rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)"
     ],
     "additionalDirectories": [
       "/private/tmp"
