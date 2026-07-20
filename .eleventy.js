@@ -4,6 +4,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/uploads");
 
+  // Lab experiments occasionally ship their own JS/data files, colocated
+  // with the page so relative fetches ("data/x.json") resolve correctly.
+  eleventyConfig.addPassthroughCopy("src/lab/**/*.js");
+  eleventyConfig.addPassthroughCopy("src/lab/**/*.json");
+
   // Case studies, newest design-system work first by explicit order
   eleventyConfig.addCollection("caseStudies", (c) =>
     c.getFilteredByTag("case").sort((a, b) => a.data.order - b.data.order)

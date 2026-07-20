@@ -1,0 +1,88 @@
+/* ------------------------------------------------------------------
+   map-quiz — themed to the dan.danow.ski design system.
+
+   Load AFTER index.css (it relies on the site tokens defined there).
+   All colours resolve through your light-dark() semantic tokens, and
+   color-scheme inherits into the component's shadow DOM — so the quiz
+   follows the light / dark toggle automatically, with no extra JS and
+   no dark-mode override block.
+   ------------------------------------------------------------------ */
+
+map-quiz {
+  /* type ------------------------------------------------------------ */
+  --mq-font:      var(--sans);   /* Archivo — headings & body */
+  --mq-font-mono: var(--mono);   /* IBM Plex Mono — labels, buttons, pills, metrics */
+
+  /* surfaces -------------------------------------------------------- */
+  --mq-bg:      var(--paper);    /* the quiz blends into the PAGE background */
+  --mq-surface: var(--card);     /* the map, selection cards, pills, controls */
+  --mq-border:  var(--line2);    /* hairlines */
+
+  /* colour (each follows the light/dark toggle) --------------------- */
+  --mq-text:   var(--ink);
+  --mq-muted:  var(--mute);
+  --mq-accent: var(--accent);    /* blue — progress, focus, links */
+  --mq-solved: var(--green);     /* a correct answer */
+  --mq-target: var(--accent);    /* the highlighted region (Learn + Name) */
+  --mq-wrong:  var(--red, #e5484d); /* TODO: point at your red token once you add one */
+
+  /* map ------------------------------------------------------------- */
+  --mq-land:       light-dark(var(--primitives-color-neutral-300), var(--primitives-color-neutral-700));
+  --mq-land-hover: light-dark(var(--primitives-color-neutral-400), var(--primitives-color-neutral-600));
+  --mq-label:      var(--ink);   /* readable in both themes */
+  --mq-label-halo: light-dark(rgba(255, 255, 255, .85), rgba(7, 8, 11, .7));
+  /* --mq-map-stroke defaults to #fff (the lines between regions) — override if you like */
+
+  /* shape ----------------------------------------------------------- */
+  --mq-radius:         var(--theme-semantic-shape-radius-md); /* 8px — outer card */
+  --mq-radius-control: var(--radius-sm);                      /* 4px — buttons & map controls */
+
+  /* fit the viewport ------------------------------------------------ */
+  /* Your lab pages have a sticky header, so subtract its height here so
+     the map never hides under it. Measure your header and adjust the
+     64px if needed; drop the calc() back to plain 100dvh if you remove
+     the sticky header. */
+  --mq-max-height: calc(100dvh - 64px);
+  /* --mq-min-height: 480px;   floor for the map screens (default is fine) */
+  /* --mq-chrome:     240px;   room the HUD/progress/toolbar take (default is fine) */
+}
+
+/* outer container blends into the page; the map + cards are the surfaces */
+map-quiz::part(wrap) { border: none; box-shadow: none; }
+
+/* headings → .section-h */
+map-quiz::part(heading) { font-weight: 600; letter-spacing: -0.02em; }
+
+/* selection cards (quiz picker + mode picker) → .craft-card lift */
+map-quiz::part(card) {
+  border-radius: 5px;
+  box-shadow: none;
+  transition: transform .18s ease, border-color .18s ease;
+}
+map-quiz::part(card):hover { transform: translate(2px, -2px); border-color: var(--accent); box-shadow: none; }
+
+/* action buttons → .btn family (font is mono via --mq-font-mono) */
+map-quiz::part(button) { font-size: 13px; font-weight: 500; }
+map-quiz::part(button-primary) {            /* → .btn--solid */
+  background: var(--ink);
+  color: var(--paper);
+  border-color: transparent;
+}
+map-quiz::part(button-primary):hover { background: var(--accent); }
+map-quiz::part(button-secondary) { background: transparent; } /* → .btn--ghost */
+map-quiz::part(button-secondary):hover { border-color: var(--ink); }
+
+/* answer pills → .tag / .stag */
+map-quiz::part(option) { border-radius: 3px; font-size: 12.5px; }
+map-quiz::part(option):hover { color: var(--accent); border-color: var(--accent); }
+
+/* small labels → .metric / .kicker */
+map-quiz::part(stat-label),
+map-quiz::part(kicker) { letter-spacing: 0.06em; color: var(--mute); }
+map-quiz::part(backlink) { color: var(--mute); }
+map-quiz::part(backlink):hover { color: var(--accent); }
+map-quiz::part(progress) { background: var(--accent); }
+
+/* map controls */
+map-quiz::part(zoom-button) { box-shadow: none; }
+map-quiz::part(zoom-button):hover { border-color: var(--accent); color: var(--accent); }

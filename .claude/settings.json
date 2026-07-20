@@ -78,7 +78,15 @@
       "Bash(rm -rf _site /tmp/build.txt)",
       "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)",
       "Bash(grep -o '<a href=\"/work/\"[^>]*>work</a>' /Users/dan/web/dan.danow.ski/2026.07/_site/work/index.html; grep -o '<a href=\"/work/\">work</a>' /Users/dan/web/dan.danow.ski/2026.07/_site/work/atolls-ds/index.html; rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)",
-      "Bash(grep -c \"work-row\" /Users/dan/web/dan.danow.ski/2026.07/_site/index.html; grep -o 'view all work[^<]*</a>' /Users/dan/web/dan.danow.ski/2026.07/_site/index.html; rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)"
+      "Bash(grep -c \"work-row\" /Users/dan/web/dan.danow.ski/2026.07/_site/index.html; grep -o 'view all work[^<]*</a>' /Users/dan/web/dan.danow.ski/2026.07/_site/index.html; rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt)",
+      "Bash(cd /Users/dan/web/dan.danow.ski/2026.07 && npx eleventy > /tmp/build.txt 2>&1; grep -i error /tmp/build.txt; find _site/lab -type f | sort)",
+      "Bash(npx http-server *)",
+      "Bash(curl -sI http://127.0.0.1:8977/lab/map-quiz/map-quiz.js)",
+      "Bash(curl -sI http://127.0.0.1:8977/lab/map-quiz/quizzes.json)",
+      "Bash(cat /tmp/http.log; which http-server npx)",
+      "Read(//private/tmp/**)",
+      "Bash(python3 -m http.server 8977)",
+      "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt /tmp/http.log)"
     ],
     "additionalDirectories": [
       "/private/tmp"

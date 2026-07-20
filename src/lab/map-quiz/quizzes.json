@@ -1,0 +1,8 @@
+{
+  "title": "Map Quiz",
+  "subtitle": "Choose a quiz to begin.",
+  "quizzes": [
+    { "title": "Counties of Ireland", "subtitle": "All 32 counties", "icon": "🍀", "src": "data/ireland.json" },
+    { "title": "United States", "subtitle": "50 states — plus D.C. & territories to learn", "icon": "🗽", "src": "data/us-states.json" }
+  ]
+}
