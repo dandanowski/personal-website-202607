@@ -90,9 +90,8 @@ html {
   --mockup-label: #8a8e97; /* tc-group heading / tc-row .hex text */
   --mockup-arrow: #b9bcc2; /* tc-row .arr separator glyph */
 
-  /* Green CTA button — no matching design token, verify with design system */
-  --btn-green-fg: #06200f;
-  --btn-green-hover: #4ed978;
+  --btn-green-fg: var(--theme-component-button-foreground-emphasis);
+  --btn-green-hover: var(--theme-component-button-background-emphasis);
 }
 
 body {
