@@ -87,10 +87,28 @@
       "Read(//private/tmp/**)",
       "Bash(python3 -m http.server 8977)",
       "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt /tmp/http.log)",
-      "Bash(node -e \"console.log\\(require\\('sharp'\\)\\)\")"
+      "Bash(node -e \"console.log\\(require\\('sharp'\\)\\)\")",
+      "Bash(rm -rf _site)",
+      "Bash(diff -rq /tmp/_site_before _site 2>/dev/null; echo \"no baseline dir saved, regenerating comparison\"; )",
+      "Bash(rm -rf _site && npx eleventy > /tmp/build4.log 2>&1; grep -i \"error\\\\|conflict\" /tmp/build4.log; find _site/lab -type f | sort)",
+      "Bash(kill 61999)",
+      "Read(//Users/dan/**)",
+      "Bash(find / -iname \"*.eleventy-serve*\")",
+      "Read(//Users/dan/web/**)",
+      "Bash(find /Users/dan/web -maxdepth 2 -type d 2>/dev/null)",
+      "Read(//Users/dan/web/personal-blog-old/content/**)",
+      "Read(//Users/dan/web/dan.danow.ski/2026.06/**)",
+      "Bash(find /Users/dan/web/personal-blog-old -iname \"*design-system*\" 2>/dev/null | head -20)",
+      "Read(//Users/dan/web/personal-blog-old/**)",
+      "Bash(find /Users/dan/web/personal-blog-202501/_src -iname \"*.md\" 2>/dev/null | grep -i \"design-system\\\\|atolls\" ; echo \"---\"; find /Users/dan/web/personal-blog-202501/_src -maxdepth 3 -type d)",
+      "Read(//Users/dan/web/personal-blog-202501/_src/**)",
+      "Bash(ls /Users/dan/web/personal-blog-202501/_src/content/posts/_drafts/ 2>/dev/null)",
+      "Read(//Users/dan/web/personal-blog-202501/_src/content/posts/_drafts/**)",
+      "Bash(rm -rf _site && npx eleventy > /tmp/build7.log 2>&1; grep -i \"error\\\\|conflict\" /tmp/build7.log; find _site/lab -type f | sort)"
     ],
     "additionalDirectories": [
-      "/private/tmp"
+      "/private/tmp",
+      "/tmp"
     ]
   }
 }

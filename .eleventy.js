@@ -2,12 +2,14 @@ module.exports = function (eleventyConfig) {
   // Static assets copied as-is
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addPassthroughCopy("src/uploads");
+  eleventyConfig.addPassthroughCopy({ "src/content/uploads": "uploads" });
 
   // Lab experiments occasionally ship their own JS/data files, colocated
   // with the page so relative fetches ("data/x.json") resolve correctly.
-  eleventyConfig.addPassthroughCopy("src/lab/**/*.js");
-  eleventyConfig.addPassthroughCopy("src/lab/**/*.json");
+  eleventyConfig.addPassthroughCopy(
+    { "src/content/lab": "lab" },
+    { filter: ["**/*", "!**/*.md"] }
+  );
 
   // Case studies, newest design-system work first by explicit order
   eleventyConfig.addCollection("caseStudies", (c) =>

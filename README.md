@@ -27,16 +27,20 @@ src/
     partials/footer.liquid   Footer bar
   css/index.css              All styles. Tokens in :root; dark theme overrides.
   assets/js/theme.js         Light/dark toggle (persists to localStorage)
-  uploads/                   Images (case-study screenshots)
-  index.html                 Home
-  writing.html               Blog index
-  work/*.md                  Case studies   -> /work/<slug>/
-  wrote-about/*.md           Blog posts     -> /wrote-about/<slug>/
+  content/                   Pages & collections. Permalinks are path-derived
+                              as if this folder didn't exist (see
+                              content.11tydata.js), so file moves within
+                              content/ don't change URLs on their own.
+    uploads/                 Images (case-study screenshots)
+    index.html               Home
+    writing.html              Blog index
+    work/*.md                 Case studies   -> /work/<slug>/
+    wrote-about/*.md          Blog posts     -> /wrote-about/<slug>/
 ```
 
 ## Add a case study
 
-Create `src/work/<slug>.md`. Front matter drives the chrome; the body is the
+Create `src/content/work/<slug>.md`. Front matter drives the chrome; the body is the
 content (plain HTML using the helper classes in `index.css` — `.case-sec`,
 `.tiers`, `.pipe`, `.trio`, `.demos`, `.otable`, `blockquote.pull`).
 
@@ -65,7 +69,7 @@ next: { label: "next case", title: "…", url: "/work/next/" }
 
 ## Add a blog post
 
-Create `src/wrote-about/<slug>.md` with `layout: layouts/post.liquid` and
+Create `src/content/wrote-about/<slug>.md` with `layout: layouts/post.liquid` and
 `tags: post`. Set `subtitle`, `date`, `reading`, `tags_display`, `toc`
 (jump-links — give each `<h2>` a matching `id`), and `related`. Write the body
 as HTML so heading `id`s are explicit.
@@ -94,5 +98,5 @@ de-stickies on small screens.
 ## Notes
 
 - The Northwest Vipers case shows the legacy-site screenshots. Drop a screenshot
-  of the rebuilt site into `src/uploads/` and add an "after" figure when ready.
+  of the rebuilt site into `src/content/uploads/` and add an "after" figure when ready.
 - Fonts: Archivo + IBM Plex Mono, loaded from Google Fonts in `base.liquid`.
