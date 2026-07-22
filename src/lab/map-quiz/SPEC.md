@@ -1,6 +1,6 @@
 # Map Quiz — Design Specification
 
-Status: living document · Component version at time of writing: **1.6.0**
+Status: living document · Component version at time of writing: **1.7.0**
 
 This document describes what the `<map-quiz>` component is, how it behaves, and the
 decisions behind it. It is the reference for anyone extending the component, adding a
@@ -83,6 +83,9 @@ Region fields:
   region's largest polygon so labels don't land in the sea).
 - `short` (optional) — a compact on-map label (e.g. `"RI"`) shown in Learn mode when the
   full name won't fit; `name` is still used everywhere else.
+- `capital` (optional) — the secondary fact shown in the Learn-mode selection callout
+  (capital city, county town, etc.). `capitalLabel` (top-level) sets its label (default
+  `"Capital"`; Ireland uses `"County town"`).
 - `category` (optional) — marks a region as context-only. Any value other than `"state"`
   (`"district"`, `"territory"`, `"microstate"`, …), or an explicit `"quiz": false`, means
   the region is shown and labelled in **Learn** mode but excluded from the two quiz modes.
@@ -118,8 +121,11 @@ Three modes, chosen by the player at the start of each quiz:
 
 - **Learn the map.** Every region is labelled. Hovering, focusing, or tapping a region
   focuses it (its full name — plus any category note like "Monaco · microstate" — shows in
-  the header); tapping pins the focus. Context regions (`category`) are tinted differently
-  and explained in a legend. This is a study mode with no scoring.
+  the header). Clicking/tapping a region also pins a **callout** anchored to it showing its
+  name and `capital` (labelled by `capitalLabel`) and any category note; the callout is
+  dismissed by clicking/tapping anywhere else or pressing Esc, and re-anchors on pan/zoom.
+  Context regions (`category`) are tinted differently and explained in a legend. This is a
+  study mode with no scoring.
 - **Find it on the map.** The prompt names a region; the player clicks it on the map.
 - **Name the region.** A region is highlighted; the player picks its name from a scrollable
   list of the regions not yet solved (the list shrinks as they are answered).
@@ -205,7 +211,7 @@ because `color-scheme` inherits into the shadow tree. The full set:
 `!important` needed): `wrap`, `heading`, `card`, `backlink`, `button` /
 `button-primary` / `button-secondary`, `option`, `stat` / `stat-value` / `stat-label`,
 `kicker`, `progress`, `map`, `panel`, `zoom-button`, `about-button`, `dialog`,
-`dialog-close`.
+`dialog-close`, `callout`.
 
 Design intent: `--mq-bg` (page) and `--mq-surface` (raised things) are deliberately
 separate so the component can blend into a page while the map and cards still read as

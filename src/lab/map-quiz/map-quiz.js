@@ -213,6 +213,20 @@
       background: transparent; color: var(--mq-muted); font-size: 15px; line-height: 1; display: grid; place-items: center;
     }
     .about-dlg .dlg-close:hover { color: var(--mq-text); border-color: var(--mq-border); }
+
+    /* Learn mode: selection callout (region name + capital / county town) */
+    .callout {
+      position: absolute; left: 0; top: 0; z-index: 5; display: none; max-width: 230px;
+      background: var(--mq-surface); color: var(--mq-text);
+      border: 1px solid var(--mq-border); border-radius: var(--mq-radius-control);
+      box-shadow: 0 6px 24px rgba(15,23,42,.22); padding: 9px 12px;
+    }
+    .callout.show { display: block; animation: mq-pop .12s ease-out; }
+    @keyframes mq-pop { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+    .callout .callout-name { font-size: 14.5px; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; }
+    .callout .callout-fact { margin-top: 3px; font-size: 13px; }
+    .callout .callout-fact .k { color: var(--mq-muted); font-family: var(--mq-font-mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; margin-right: 6px; }
+    .callout .callout-note { margin-top: 4px; font-size: 11.5px; color: var(--mq-muted); font-style: italic; }
     .zoom-ctl button:disabled { opacity: .45; cursor: default; }
     .zoom-ctl button:focus-visible { outline: 3px solid color-mix(in srgb, var(--mq-accent) 45%, transparent); outline-offset: 2px; }
     svg.map path.region {
@@ -293,7 +307,7 @@
   `;
 
   class MapQuiz extends HTMLElement {
-    static version = '1.6.0'; // bump on release; check via document.querySelector('map-quiz').constructor.version
+    static version = '1.7.0'; // bump on release; check via document.querySelector('map-quiz').constructor.version
     static get observedAttributes() { return ['src', 'mode', 'heading']; }
 
     constructor() {
@@ -508,6 +522,7 @@
             <div class="zoom-hint" data-hint></div>
             <svg class="map learn" part="map" viewBox="${esc(this._data.viewBox)}" role="group" aria-label="${esc(title)} map — every ${esc(noun)} labelled"></svg>
             ${about.btn}${about.dlg}
+            <div class="callout" part="callout" data-callout role="status" aria-live="polite"></div>
           </div>
         </div>
         <div class="toolbar">
@@ -540,6 +555,55 @@
         if (this._relayout) this._relayout(); // re-flow labels so the focused one always shows
       };
 
+      // ---- selection callout (name + capital / county town) ----
+      if (this._teardownCallout) { this._teardownCallout(); this._teardownCallout = null; }
+      const capLabel = this._data.capitalLabel || 'Capital';
+      const callout = this._root.querySelector('[data-callout]');
+      const mapbox = this._root.querySelector('.mapbox');
+      const positionCallout = (id) => {
+        if (!callout.classList.contains('show') || !this._paths[id]) return;
+        const pr = this._paths[id].getBoundingClientRect();
+        const mr = mapbox.getBoundingClientRect();
+        const cw = callout.offsetWidth, ch = callout.offsetHeight, pad = 8;
+        let left = (pr.left + pr.width / 2 - mr.left) - cw / 2;
+        left = Math.max(pad, Math.min(left, mr.width - cw - pad));
+        let top = (pr.top - mr.top) - ch - 10;          // prefer above the region
+        if (top < pad) top = (pr.bottom - mr.top) + 10; // flip below if no room
+        top = Math.max(pad, Math.min(top, mr.height - ch - pad));
+        callout.style.left = left + 'px';
+        callout.style.top = top + 'px';
+      };
+      const onKey = (e) => { if (e.key === 'Escape' && this._learnPinned) { e.stopPropagation(); dismissCallout(); } };
+      const onDocClick = (e) => {
+        if (this._dragMoved) return;                     // ignore the click synthesised after a pan
+        const path = e.composedPath ? e.composedPath() : [e.target];
+        if (path.some((el) => el.classList && (el.classList.contains('region') || el.classList.contains('callout')))) return;
+        dismissCallout();
+      };
+      let dismissBound = false;
+      const bindDismiss = () => { if (dismissBound) return; dismissBound = true; window.addEventListener('keydown', onKey, true); window.addEventListener('click', onDocClick); };
+      const unbindDismiss = () => { if (!dismissBound) return; dismissBound = false; window.removeEventListener('keydown', onKey, true); window.removeEventListener('click', onDocClick); };
+      this._teardownCallout = unbindDismiss;
+      const showCallout = (id) => {
+        const r = this._region(id);
+        const cat = r.category ? (catLabel[r.category] || r.category) : '';
+        callout.innerHTML =
+          `<div class="callout-name">${esc(r.name)}</div>` +
+          (r.capital ? `<div class="callout-fact"><span class="k">${esc(capLabel)}</span> ${esc(r.capital)}</div>` : '') +
+          (cat ? `<div class="callout-note">${esc(cat)}</div>` : '');
+        callout.classList.add('show');
+        positionCallout(id);
+        this._repositionCallout = () => positionCallout(id);
+        bindDismiss();
+      };
+      const dismissCallout = () => {
+        this._learnPinned = null;
+        setActive(null);
+        callout.classList.remove('show');
+        this._repositionCallout = null;
+        unbindDismiss();
+      };
+
       this._data.regions.forEach((r) => {
         const p = document.createElementNS(SVGNS, 'path');
         p.setAttribute('d', r.path);
@@ -555,8 +619,8 @@
         p.addEventListener('blur', () => { if (!this._learnPinned) setActive(null); });
         p.addEventListener('click', () => {
           if (this._dragMoved) return;
-          this._learnPinned = this._learnPinned === r.id ? null : r.id;
-          setActive(this._learnPinned);
+          if (this._learnPinned === r.id) { dismissCallout(); }
+          else { this._learnPinned = r.id; setActive(r.id); showCallout(r.id); }
         });
         p.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); p.click(); }
@@ -639,6 +703,8 @@
       const noun = this._data.prompt || 'region';
       const isName = this._state.mode === 'name';
       const about = this._mapAbout();
+      this._repositionCallout = null; // no Learn callout on the quiz screens
+      if (this._teardownCallout) { this._teardownCallout(); this._teardownCallout = null; }
       this._root.dataset.screen = 'play';
       this._root.innerHTML = `
         <div class="hud">
@@ -896,6 +962,7 @@
         this._pxToUser = scale ? 1 / scale : 1;
         if (this._layoutLabels) this._layoutLabels(st.s, st.tx, st.ty); // labels follow but keep a constant screen size
         this._syncPanelHeight(r.height);
+        if (this._repositionCallout) this._repositionCallout(); // keep the Learn callout anchored on pan/zoom
       };
       this._relayout = () => { if (this._layoutLabels) this._layoutLabels(st.s, st.tx, st.ty); };
       const toVB = (cx, cy) => {
