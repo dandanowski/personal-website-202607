@@ -104,7 +104,19 @@
       "Read(//Users/dan/web/personal-blog-202501/_src/**)",
       "Bash(ls /Users/dan/web/personal-blog-202501/_src/content/posts/_drafts/ 2>/dev/null)",
       "Read(//Users/dan/web/personal-blog-202501/_src/content/posts/_drafts/**)",
-      "Bash(rm -rf _site && npx eleventy > /tmp/build7.log 2>&1; grep -i \"error\\\\|conflict\" /tmp/build7.log; find _site/lab -type f | sort)"
+      "Bash(rm -rf _site && npx eleventy > /tmp/build7.log 2>&1; grep -i \"error\\\\|conflict\" /tmp/build7.log; find _site/lab -type f | sort)",
+      "Bash(find /Users/dan/web/personal-blog-202501/_src/assets -iname \"*procon*\" -o -iname \"*aveva*\" 2>/dev/null | head -30)",
+      "Read(//Users/dan/web/personal-blog-202501/_src/assets/**)",
+      "Bash(cp __TRACKED_VAR__/hero/procon.png procon-hero.png)",
+      "Bash(cp __TRACKED_VAR__/hero/leading-design.png procon-design-sprint-hero.png)",
+      "Bash(cp __TRACKED_VAR__/case-study/aveva-procon-design-sprint-workshop.png procon-design-sprint-workshop.png)",
+      "Bash(cp __TRACKED_VAR__/case-study/aveva-procon-comms.png procon-comms-flow.png)",
+      "Bash(cp __TRACKED_VAR__/case-study/aveva-procon-wireframe-sketches.png procon-wireframe-sketches.png)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(curl -s http://localhost:8181/writing/)",
+      "Bash(pkill -f \"eleventy --serve --port=8181\")",
+      "Bash(rm -rf _site && npx eleventy > /tmp/build_final2.log 2>&1; grep -i \"error\\\\|conflict\" /tmp/build_final2.log; tail -5 /tmp/build_final2.log)",
+      "Bash(rm -rf _site && npx eleventy > /tmp/build_align.log 2>&1; grep -i error /tmp/build_align.log; echo \"build ok\")"
     ],
     "additionalDirectories": [
       "/private/tmp",

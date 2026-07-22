@@ -1343,29 +1343,45 @@ aside.rail .rel a:hover {
 }
 .draft-row {
   display: grid;
-  grid-template-columns: 150px 1fr 130px;
-  gap: 26px;
-  align-items: start;
-  padding: 24px 18px;
+  grid-template-columns: 90px 1fr 60px;
+  gap: 18px;
+  align-items: center;
+  padding: 10px 18px;
   border-top: 1px solid var(--line);
   opacity: 0.62;
 }
 .draft-row .when {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--mute);
 }
+.draft-row .title-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+.draft-row .post-tags {
+  margin-bottom: 0;
+}
 .draft-row h2 {
-  font-size: 19px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: -0.015em;
-  margin: 0 0 8px;
-  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.draft-row .tag {
+  flex: none;
+  padding: 2px 8px;
 }
 .draft-row .st {
   text-align: right;
   font-family: var(--mono);
-  font-size: 11.5px;
+  font-size: 10.5px;
   color: var(--mute);
 }
 

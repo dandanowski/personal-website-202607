@@ -34,24 +34,40 @@ module.exports = function (eleventyConfig) {
     c.getFilteredByTag("lab").sort((a, b) => a.data.title.localeCompare(b.data.title))
   );
 
+  // Draft notes living in wrote-about/_drafts — not yet published, never
+  // written to the site (permalink: false). writing.html shows the ones
+  // flagged `highlightDraft: true`, in curated order.
+  eleventyConfig.addCollection("drafts", (c) =>
+    c.getFilteredByTag("draft").sort((a, b) => a.data.order - b.data.order)
+  );
+
+  // Draft notes carry `topics` too (for their own display), but they're
+  // data-only (permalink: false) and must never surface on the public
+  // /tags/ pages, which link straight to `item.url`.
+  const isPublishable = (item) => !(item.data.tags || []).includes("draft");
+
   // Topic tags: any content item can declare `topics: [...]` in front matter.
   // One sorted, de-duplicated slug list drives the /tags/<slug>/ pagination.
   eleventyConfig.addCollection("tagList", (c) => {
     const tags = new Set();
-    c.getAll().forEach((item) => {
-      (item.data.topics || []).forEach((t) => tags.add(t));
-    });
+    c.getAll()
+      .filter(isPublishable)
+      .forEach((item) => {
+        (item.data.topics || []).forEach((t) => tags.add(t));
+      });
     return [...tags].sort();
   });
 
   // Same data as tagList, but with a count per tag for the /tags/ hub page.
   eleventyConfig.addCollection("tagCounts", (c) => {
     const counts = {};
-    c.getAll().forEach((item) => {
-      (item.data.topics || []).forEach((t) => {
-        counts[t] = (counts[t] || 0) + 1;
+    c.getAll()
+      .filter(isPublishable)
+      .forEach((item) => {
+        (item.data.topics || []).forEach((t) => {
+          counts[t] = (counts[t] || 0) + 1;
+        });
       });
-    });
     return Object.keys(counts)
       .sort()
       .map((tag) => ({ tag, count: counts[tag] }));
@@ -59,7 +75,7 @@ module.exports = function (eleventyConfig) {
 
   // Filter any collection down to items carrying a given topic tag.
   eleventyConfig.addFilter("withTopic", (items, tag) =>
-    (items || []).filter((item) => (item.data.topics || []).includes(tag))
+    (items || []).filter(isPublishable).filter((item) => (item.data.topics || []).includes(tag))
   );
 
   return {

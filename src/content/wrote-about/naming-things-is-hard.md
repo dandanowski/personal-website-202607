@@ -12,8 +12,8 @@ toc:
   - { id: "s2", label: "More guidelines than code" }
   - { id: "s3", label: "Right so, as it stands…" }
 related:
-  - { url: "/work/atolls/", title: "One token architecture across 60+ brands" }
-  - { url: "/work/cycloid/", title: "Machine-readable token architecture" }
+  - { url: "/work/atolls-ds/", title: "One token architecture across 60+ brands" }
+  - { url: "/work/cycloid-ds/", title: "Machine-readable token architecture" }
   - { url: "/writing/", title: "More writing" }
 ---
 <p class="lead">OMFG, naming things is so hard. I've come to the conclusion that the perfect naming convention for design tokens may actually exist — I'm just not smart enough to figure it out, and certainly not with these deadlines.</p>

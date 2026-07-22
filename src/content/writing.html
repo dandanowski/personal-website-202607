@@ -2,11 +2,6 @@
 layout: layouts/base.liquid
 title: Writing — notes from building design systems
 description: Field notes on design tokens, governance, and the decisions that keep a design system reliable.
-drafts:
-  - { when: soon, title: "Designing design systems for machines, not just designers", tag: "#ai" }
-  - { when: soon, title: "I rebuilt a token pipeline with Claude in under two weeks", tag: "#pipeline" }
-  - { when: soon, title: "Spec-first: systems that outlive their tech stack", tag: "#governance" }
-  - { when: soon, title: "Components vs patterns: where the bottleneck really is", tag: "#governance" }
 ---
 <section class="rule-bottom">
   <div class="wrap" style="padding-top:66px;padding-bottom:46px">
@@ -16,7 +11,7 @@ drafts:
   </div>
 </section>
 
-<section class="wrap" style="padding-top:8px;padding-bottom:40px">
+<section class="wrap">
   {% for post in collections.posts %}<div class="post-row">
     <div class="when">{{ post.data.date | date: "%b %-d, %Y" }}<br><span class="rt">{{ post.data.reading }}</span></div>
     <div>
@@ -30,10 +25,10 @@ drafts:
   <div style="border-top:1px solid var(--line2);margin-top:8px;padding:38px 18px 18px">
     <div style="font-family:var(--mono);font-size:11.5px;color:var(--mute);letter-spacing:0.06em">IN THE NOTEBOOK — DRAFTS IN PROGRESS</div>
   </div>
-  {% for d in drafts %}<div class="draft-row">
-    <div class="when">{{ d.when }}</div>
-    <div><h2>{{ d.title }}</h2><div class="post-tags"><span class="tag">{{ d.tag }}</span></div></div>
+  {% for d in collections.drafts %}{% if d.data.highlightDraft %}<div class="draft-row">
+    <div class="when">{{ d.data.when }}</div>
+    <div class="title-tag"><h2>{{ d.data.title }}</h2><div class="post-tags">{% for t in d.data.topics %}<span class="tag">#{{ t }}</span>{% endfor %}</div></div>
     <div class="st">draft</div>
-  </div>{% endfor %}
+  </div>{% endif %}{% endfor %}
   <div style="border-top:1px solid var(--line)"></div>
 </section>
