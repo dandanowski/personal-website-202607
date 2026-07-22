@@ -22,7 +22,7 @@ card:
 next:
   label: "next case"
   title: "Cycloid — nested teams & permission inheritance"
-  url: "/work/nested-teams/"
+  url: "/work/cycloid-nested-teams/"
 ---
 <div style="padding:56px 0 56px;border-bottom:1px solid var(--line)">
   <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:24px">

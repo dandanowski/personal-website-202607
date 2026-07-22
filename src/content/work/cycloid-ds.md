@@ -23,7 +23,7 @@ card:
 next:
   label: "next case — 02"
   title: "One token architecture across 60+ brands"
-  url: "/work/atolls/"
+  url: "/work/atolls-ds/"
 ---
 {% include "partials/bf-cycloid.liquid" %}
 

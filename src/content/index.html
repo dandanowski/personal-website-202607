@@ -81,8 +81,8 @@ description: Dan Danowski — product/ux designer specialising in production des
     <div class="craft-grid">
       {% for cs in collections.caseStudies %}{% if cs.data.group == "craft" %}<a class="craft-card" href="{{ cs.url }}">
         <div class="top"><span>{{ cs.data.card.n }}</span><span>view &nbsp;&rarr;</span></div>
-        {% if cs.fileSlug == "northwest-vipers" %}<div class="card-teaser"><figure style="margin:0"><img src="/uploads/vipers-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--mute);margin-top:5px">BEFORE</figcaption></figure><figure style="margin:0"><img src="/uploads/vipers-new-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--accent);margin-top:5px">AFTER</figcaption></figure></div>{% endif %}
-        {% if cs.fileSlug == "nested-teams" %}<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px">
+        {% if cs.fileSlug == "northwest-vipers-website" %}<div class="card-teaser"><figure style="margin:0"><img src="/uploads/vipers-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--mute);margin-top:5px">BEFORE</figcaption></figure><figure style="margin:0"><img src="/uploads/vipers-new-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--accent);margin-top:5px">AFTER</figcaption></figure></div>{% endif %}
+        {% if cs.fileSlug == "cycloid-nested-teams" %}<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px">
           <div>
             <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;color:var(--mute);margin-bottom:6px">FLAT</div>
             <div style="border:1px solid var(--line2);border-radius:5px;background:#fff;height:148px;padding:11px 12px;overflow:hidden">
@@ -114,10 +114,31 @@ description: Dan Danowski — product/ux designer specialising in production des
   </div>
 </section>
 
+<section class="rule-bottom" id="writing">
+  <div class="wrap" style="padding-top:72px;padding-bottom:30px">
+    <div class="kicker">04 / writing</div>
+    <h2 class="section-h">Notes from the work, not the theory</h2>
+    <p style="font-size:15px;color:var(--mute);max-width:58ch;margin:14px 0 0;line-height:1.55">Field notes on design tokens, governance, and the decisions that keep a system reliable.</p>
+  </div>
+  <div class="wrap" style="padding-bottom:72px">
+    <div class="craft-grid">
+      {% for post in collections.posts limit: 4 %}<a class="craft-card" href="{{ post.url }}">
+        <div class="top"><span>{{ post.data.date | date: "%b %-d, %Y" }}</span><span>{{ post.data.reading }}</span></div>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.subtitle }}</p>
+        <div class="foot" style="display:flex;gap:8px;flex-wrap:wrap;border-top:none;padding-top:0">{% for t in post.data.topics %}<span class="tag">#{{ t }}</span>{% endfor %}</div>
+      </a>{% endfor %}
+    </div>
+    <div style="border-top:1px solid var(--line2);padding-top:24px;margin-top:22px">
+      <a class="go" href="/writing/" style="font-family:var(--mono);font-size:12.5px;color:var(--accent);text-decoration:none">view all writing &nbsp;&rarr;</a>
+    </div>
+  </div>
+</section>
+
 <section class="rule-bottom" id="about">
   <div class="wrap about" style="padding-top:78px;padding-bottom:78px">
     <div>
-      <div class="kicker">04 / about</div>
+      <div class="kicker">05 / about</div>
       <h2 class="section-h" style="max-width:18ch">Twelve years making design systems load-bearing</h2>
       <p>I've designed for the web since 2000 — the last twelve years focused on design systems. I've built the design function from scratch at a startup, led the enterprise system at AVEVA across a 20-person UX org, and managed a five-designer team scaling 60 brands at Atolls. I design <em>and</em> write front-end — HTML/CSS, React, Vue, Angular — so the spec and the code never drift apart.</p>
       <p style="color:var(--mute)">Accessibility (WCAG 2.1) runs through every role. Off the clock I chair and coach an American football club in the northwest of Ireland — governance, budgets, and a website I designed and built myself.</p>

@@ -116,7 +116,20 @@
       "Bash(curl -s http://localhost:8181/writing/)",
       "Bash(pkill -f \"eleventy --serve --port=8181\")",
       "Bash(rm -rf _site && npx eleventy > /tmp/build_final2.log 2>&1; grep -i \"error\\\\|conflict\" /tmp/build_final2.log; tail -5 /tmp/build_final2.log)",
-      "Bash(rm -rf _site && npx eleventy > /tmp/build_align.log 2>&1; grep -i error /tmp/build_align.log; echo \"build ok\")"
+      "Bash(rm -rf _site && npx eleventy > /tmp/build_align.log 2>&1; grep -i error /tmp/build_align.log; echo \"build ok\")",
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "Read(//Applications/Google Chrome.app/Contents/MacOS/**)",
+      "Read(//Applications/**)",
+      "Read(//Applications/Microsoft Edge.app/Contents/MacOS/**)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1400,2600 --screenshot=home.png \"http://localhost:8182/\")",
+      "Bash(rm -f home2.png)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1400,1000 --screenshot=home2.png \"http://localhost:8182/#writing\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1400,4200 --screenshot=homefull.png \"http://localhost:8182/\")",
+      "Bash(lsof -ti:8182 -sTCP:LISTEN)",
+      "Bash(rm -f full.png)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1400,4600 --screenshot=full.png \"http://localhost:8183/\")",
+      "Bash(python3 -c ' *)",
+      "Bash(lsof -ti:8183 -sTCP:LISTEN)"
     ],
     "additionalDirectories": [
       "/private/tmp",

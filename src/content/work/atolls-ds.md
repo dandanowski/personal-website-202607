@@ -27,7 +27,7 @@ card:
 next:
   label: "next case — 03"
   title: "Unifying 150+ products across five tech stacks"
-  url: "/work/aveva/"
+  url: "/work/aveva-ds/"
 ---
 
 <div class="case-sec"><div class="si">01 / the problem</div><div class="case-body" style="max-width:none">

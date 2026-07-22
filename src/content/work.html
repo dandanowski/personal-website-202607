@@ -37,8 +37,8 @@ description: Design systems built and scaled from startup to enterprise, plus pr
     <div class="craft-grid">
       {% for cs in collections.caseStudies %}{% if cs.data.group == "craft" %}<a class="craft-card" href="{{ cs.url }}">
         <div class="top"><span>{{ cs.data.card.n }}</span><span>view &nbsp;&rarr;</span></div>
-        {% if cs.fileSlug == "northwest-vipers" %}<div class="card-teaser"><figure style="margin:0"><img src="/uploads/vipers-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--mute);margin-top:5px">BEFORE</figcaption></figure><figure style="margin:0"><img src="/uploads/vipers-new-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--accent);margin-top:5px">AFTER</figcaption></figure></div>{% endif %}
-        {% if cs.fileSlug == "nested-teams" %}<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px">
+        {% if cs.fileSlug == "northwest-vipers-website" %}<div class="card-teaser"><figure style="margin:0"><img src="/uploads/vipers-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--mute);margin-top:5px">BEFORE</figcaption></figure><figure style="margin:0"><img src="/uploads/vipers-new-home.png" alt=""><figcaption style="font-family:var(--mono);font-size:9px;letter-spacing:0.06em;color:var(--accent);margin-top:5px">AFTER</figcaption></figure></div>{% endif %}
+        {% if cs.fileSlug == "cycloid-nested-teams" %}<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:20px">
           <div>
             <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:0.1em;color:var(--mute);margin-bottom:6px">FLAT</div>
             <div style="border:1px solid var(--line2);border-radius:5px;background:#fff;height:148px;padding:11px 12px;overflow:hidden">

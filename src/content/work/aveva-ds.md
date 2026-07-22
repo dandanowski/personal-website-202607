@@ -23,7 +23,7 @@ card:
 next:
   label: "next case — product craft"
   title: "Northwest Vipers — website redesign"
-  url: "/work/northwest-vipers/"
+  url: "/work/northwest-vipers-website/"
 ---
 <div style="padding:56px 0 60px;border-bottom:1px solid var(--line)">
   <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:22px">
