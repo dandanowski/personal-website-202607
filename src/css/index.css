@@ -1490,6 +1490,41 @@ aside.rail .rel a:hover {
     padding-left: 20px;
     padding-right: 20px;
   }
+  /* Header: brand on its own line, nav wraps beneath instead of
+     overflowing the viewport and forcing horizontal scroll. */
+  .site-header .bar {
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+  .brand span {
+    display: none;
+  }
+  .nav {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .theme-toggle {
+    margin-left: auto;
+  }
+  /* Blog index rows: stack instead of the 3-column grid, which crushes
+     the title/tags and pushes the "read" arrow off-screen. */
+  .post-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 26px 14px;
+  }
+  .post-row .when {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+  .post-row .when br {
+    display: none;
+  }
+  .post-row .go {
+    display: none;
+  }
   .case-meta {
     grid-template-columns: 1fr 1fr;
   }

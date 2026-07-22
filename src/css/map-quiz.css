@@ -36,6 +36,7 @@ map-quiz {
   /* shape ----------------------------------------------------------- */
   --mq-radius:         var(--theme-semantic-shape-radius-md); /* 8px — outer card */
   --mq-radius-control: var(--radius-sm);                      /* 4px — buttons & map controls */
+  --mq-pad:            0;                                     /* sit flush; the page already provides margins */
 
   /* fit the viewport ------------------------------------------------ */
   /* Your lab pages have a sticky header, so subtract its height here so

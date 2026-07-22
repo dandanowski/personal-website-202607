@@ -134,7 +134,22 @@
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1400,4200 --force-color-profile=srgb --screenshot=wt_light.png \"http://localhost:8185/\" --blink-settings=preferredColorScheme=1)",
       "Bash(python3 -c \"from PIL import Image; Image.open\\('wt_light.png'\\).crop\\(\\(0,1560,760,2360\\)\\).save\\('wt_light_crop.png'\\); print\\('light ok'\\)\")",
       "Bash(lsof -ti:8185 -sTCP:LISTEN)",
-      "Bash(rm -rf _site && npx eleventy > /tmp/b.log 2>&1; grep -i error /tmp/b.log; echo built)"
+      "Bash(rm -rf _site && npx eleventy > /tmp/b.log 2>&1; grep -i error /tmp/b.log; echo built)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=390,844 --screenshot=m_header.png \"http://localhost:8186/\")",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('m_header.png'\\); print\\(im.size\\); im.crop\\(\\(0,0,390,120\\)\\).save\\('m_header_crop.png'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; Image.open\\('mh_390.png'\\).crop\\(\\(0,0,390,110\\)\\).save\\('mh_390_tall.png'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; Image.open\\('mh_390.png'\\).crop\\(\\(250,44,390,80\\)\\).resize\\(\\(420,108\\)\\).save\\('toggle_zoom.png'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; Image.open\\('mh_390.png'\\).crop\\(\\(0,150,390,320\\)\\).save\\('hero_check.png'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('mh_390.png'\\); im.crop\\(\\(0,44,390,150\\)\\).save\\('navband.png'\\)\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --virtual-time-budget=2500 --window-size=390,844 --dump-dom \"http://localhost:8186/\")",
+      "Bash(python3 -c \"import websocket; print\\('ws ok'\\)\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --virtual-time-budget=2000 --window-size=500,900 --dump-dom \"http://localhost:8186/\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=500,900 --screenshot=h500.png \"http://localhost:8186/\")",
+      "Bash(python3 -c \"from PIL import Image; Image.open\\('h500.png'\\).crop\\(\\(0,0,500,120\\)\\).save\\('h500_crop.png'\\); print\\('ok'\\)\")",
+      "Bash(lsof -ti:8186 -sTCP:LISTEN)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=500,1200 --screenshot=w_after.png \"http://localhost:8187/writing/\")",
+      "Bash(python3 -c \"from PIL import Image; Image.open\\('w_after.png'\\).crop\\(\\(0,230,500,760\\)\\).save\\('w_after_crop.png'\\); print\\('ok'\\)\")",
+      "Bash(lsof -ti:8187 -sTCP:LISTEN)"
     ],
     "additionalDirectories": [
       "/private/tmp",
