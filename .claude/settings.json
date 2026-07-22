@@ -133,7 +133,8 @@
       "Bash(python3 -c \"from PIL import Image; Image.open\\('wt_dark.png'\\).crop\\(\\(0,2020,760,2360\\)\\).save\\('wt_aveva.png'\\); print\\('ok'\\)\")",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --hide-scrollbars --window-size=1400,4200 --force-color-profile=srgb --screenshot=wt_light.png \"http://localhost:8185/\" --blink-settings=preferredColorScheme=1)",
       "Bash(python3 -c \"from PIL import Image; Image.open\\('wt_light.png'\\).crop\\(\\(0,1560,760,2360\\)\\).save\\('wt_light_crop.png'\\); print\\('light ok'\\)\")",
-      "Bash(lsof -ti:8185 -sTCP:LISTEN)"
+      "Bash(lsof -ti:8185 -sTCP:LISTEN)",
+      "Bash(rm -rf _site && npx eleventy > /tmp/b.log 2>&1; grep -i error /tmp/b.log; echo built)"
     ],
     "additionalDirectories": [
       "/private/tmp",
