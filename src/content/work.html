@@ -12,6 +12,7 @@ description: Design systems built and scaled from startup to enterprise, plus pr
   <div class="wrap" style="padding-bottom:70px">
     {% for cs in collections.caseStudies %}{% if cs.data.group == "ds" %}<a class="work-row" href="{{ cs.url }}">
       <div class="idx">{{ cs.data.card.n }}</div>
+      {% include "partials/work-thumb.liquid" %}
       <div>
         <div class="k">{{ cs.data.card.kicker }}</div>
         <h3>{{ cs.data.card.title }}</h3>

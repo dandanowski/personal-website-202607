@@ -407,7 +407,7 @@ main {
 /* ---- work list ---- */
 .work-row {
   display: grid;
-  grid-template-columns: 54px 1fr 220px;
+  grid-template-columns: 54px 120px 1fr 220px;
   gap: 26px;
   align-items: start;
   padding: 30px 18px;
@@ -416,6 +416,14 @@ main {
   color: var(--ink);
   border-radius: 4px;
   transition: background 0.18s ease;
+}
+.work-row .wt {
+  width: 120px;
+}
+.work-row .wt-svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .work-row:hover {
   background: var(--accent-wash);
@@ -1444,6 +1452,9 @@ aside.rail .rel a:hover {
   }
   .work-row {
     grid-template-columns: 40px 1fr;
+  }
+  .work-row .wt {
+    display: none;
   }
   .work-row .right {
     grid-column: 2;
