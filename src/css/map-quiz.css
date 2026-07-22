@@ -14,7 +14,7 @@ map-quiz {
   --mq-font-mono: var(--mono);   /* IBM Plex Mono — labels, buttons, pills, metrics */
 
   /* surfaces -------------------------------------------------------- */
-  --mq-bg:      var(--paper);    /* the quiz blends into the PAGE background */
+  --mq-bg:      transparent;     /* main area is transparent so the page background shows through */
   --mq-surface: var(--card);     /* the map, selection cards, pills, controls */
   --mq-border:  var(--line2);    /* hairlines */
 

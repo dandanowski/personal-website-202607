@@ -70,7 +70,7 @@
   const STYLE = `
     :host {
       --mq-accent: #2563eb;
-      --mq-bg: #f1f5f9;          /* overall quiz background — set to your PAGE background */
+      --mq-bg: transparent;      /* main quiz background — transparent so the page shows through; set a colour to fill it */
       --mq-surface: #fff;        /* raised surfaces: the map, cards, pills, controls */
       --mq-border: #e2e8f0;      /* hairlines: card/pill/button/map borders, progress track */
       --mq-land: #cbd5e1;
@@ -103,7 +103,8 @@
       background: var(--mq-bg);
       border-radius: var(--mq-radius);
       padding: clamp(14px, 3cqw, 26px);
-      box-shadow: 0 1px 3px rgba(15,23,42,.12), 0 8px 30px rgba(15,23,42,.06);
+      /* No shadow by default — the main area is transparent and blends into the page.
+         Give --mq-bg a colour and add a shadow via ::part(wrap) if you want a raised card. */
     }
 
     /* ---------- start screen ---------- */
@@ -156,8 +157,10 @@
     .wrap[data-screen="learn"] svg.map {   /* learn has no progress bar / toast, so ~52px less chrome */
       max-height: calc(var(--mq-max-height) - var(--mq-chrome) + 52px);
     }
+    /* Fallback bound for the stacked (single-column) layout; when the panel sits beside
+       the map, JS caps the list to the map's rendered height so the two columns line up. */
     .wrap[data-screen="play"] .options {
-      max-height: calc(var(--mq-max-height) - var(--mq-chrome) - 44px); overflow: auto;
+      max-height: calc(var(--mq-max-height) - var(--mq-chrome) - 44px);
     }
 
     .mapbox { background: var(--mq-surface); border-radius: 12px; padding: 8px; border: 1px solid var(--mq-border); position: relative; overflow: hidden; }
@@ -179,6 +182,37 @@
       box-shadow: 0 1px 3px rgba(15,23,42,.12); transition: border-color .12s ease, color .12s ease;
     }
     .zoom-ctl button:hover { border-color: var(--mq-accent); color: var(--mq-accent); }
+
+    /* "About the data" button — bottom-right of the map */
+    .map-about {
+      position: absolute; right: 10px; bottom: 10px; z-index: 3;
+      appearance: none; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+      padding: 4px 9px; font-size: 11.5px; line-height: 1; font-family: var(--mq-font-mono);
+      border: 1px solid var(--mq-border); border-radius: var(--mq-radius-control);
+      background: var(--mq-surface); color: var(--mq-muted); opacity: .9;
+      box-shadow: 0 1px 3px rgba(15,23,42,.1); transition: opacity .12s ease, border-color .12s ease, color .12s ease;
+    }
+    .map-about:hover { opacity: 1; border-color: var(--mq-accent); color: var(--mq-accent); }
+    .map-about:focus-visible { outline: 3px solid color-mix(in srgb, var(--mq-accent) 45%, transparent); outline-offset: 2px; }
+    .map-about .ic { font-size: 12.5px; }
+    .about-dlg {
+      margin: auto; padding: 0; max-width: 460px; width: calc(100% - 32px); color: var(--mq-text);
+      border: 1px solid var(--mq-border); border-radius: var(--mq-radius);
+      background: var(--mq-surface); box-shadow: 0 12px 44px rgba(15,23,42,.3);
+    }
+    .about-dlg::backdrop { background: rgba(15,23,42,.5); }
+    .about-dlg .dlg-in { position: relative; padding: 20px 22px; }
+    .about-dlg h3 { margin: 0 0 12px; font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+    .about-dlg p { margin: 0 0 11px; font-size: 13.5px; line-height: 1.55; color: var(--mq-text); }
+    .about-dlg p:last-child { margin-bottom: 0; }
+    .about-dlg .src { font-size: 12.5px; color: var(--mq-muted); font-family: var(--mq-font-mono); }
+    .about-dlg .src a { color: var(--mq-accent); }
+    .about-dlg .dlg-close {
+      appearance: none; position: absolute; top: 12px; right: 12px; width: 28px; height: 28px;
+      border: 1px solid transparent; border-radius: var(--mq-radius-control); cursor: pointer;
+      background: transparent; color: var(--mq-muted); font-size: 15px; line-height: 1; display: grid; place-items: center;
+    }
+    .about-dlg .dlg-close:hover { color: var(--mq-text); border-color: var(--mq-border); }
     .zoom-ctl button:disabled { opacity: .45; cursor: default; }
     .zoom-ctl button:focus-visible { outline: 3px solid color-mix(in srgb, var(--mq-accent) 45%, transparent); outline-offset: 2px; }
     svg.map path.region {
@@ -186,7 +220,7 @@
       transition: fill .15s ease; outline: none;
     }
     svg.map.pick path.region { cursor: pointer; }
-    svg.map.pick path.region:hover { fill: var(--mq-land-hover); }
+    svg.map.pick path.region:not(.wrong):not(.solved):hover { fill: var(--mq-land-hover); }
     svg.map path.region:focus-visible { stroke: var(--mq-accent); stroke-width: 2.2; }
     svg.map path.region.solved { fill: var(--mq-solved); cursor: default; }
     svg.map path.region.target { fill: var(--mq-target); }
@@ -207,15 +241,17 @@
 
     .panel { display: flex; flex-direction: column; min-height: 0; }
     .panel h3 { margin: 0 0 8px; font-size: 12.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--mq-muted); }
-    .options { display: flex; flex-wrap: wrap; gap: 8px; align-content: flex-start; overflow: auto; max-height: 60cqh; padding: 2px; }
-    @container (min-width: 720px) { .options { max-height: 520px; } }
+    /* Name mode: a vertical, scrollable list of the remaining regions. Its height is
+       capped to the map's rendered height by JS when the panel sits beside the map;
+       the CSS rule below is the fallback for the stacked single-column layout. */
+    .options { display: flex; flex-direction: column; gap: 6px; overflow-y: auto; padding: 2px; }
     .opt {
       appearance: none; font: inherit; cursor: pointer; color: inherit;
-      background: var(--mq-surface); border: 1.5px solid var(--mq-border); border-radius: 999px;
-      padding: 7px 13px; font-size: 14px; line-height: 1; transition: all .12s ease;
+      display: block; width: 100%; text-align: left;
+      background: var(--mq-surface); border: 1.5px solid var(--mq-border); border-radius: var(--mq-radius-control);
+      padding: 9px 13px; font-size: 14px; line-height: 1.25; transition: all .12s ease;
       font-family: var(--mq-font-mono);
     }
-    .layout:not(.has-panel) .opt { }
     .opt:hover { border-color: var(--mq-accent); color: var(--mq-accent); }
     .opt:focus-visible { outline: 3px solid color-mix(in srgb, var(--mq-accent) 45%, transparent); outline-offset: 1px; }
     .opt.wrong { border-color: var(--mq-wrong); color: #b91c1c; background: color-mix(in srgb, var(--mq-wrong) 15%, #fff); animation: shake .3s; }
@@ -239,6 +275,8 @@
     .legend .sw-other { background: #93c5fd; margin-left: 10px; }
 
     .toast { position: relative; min-height: 20px; margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--mq-muted); }
+    /* Find mode: feedback sits in the controls area above the map, not below it */
+    .toast.toast-top { margin-top: 2px; margin-bottom: 8px; }
     .toast.good { color: #047857; }
     .toast.bad { color: #b91c1c; }
 
@@ -255,7 +293,7 @@
   `;
 
   class MapQuiz extends HTMLElement {
-    static version = '1.4.0'; // bump on release; check via document.querySelector('map-quiz').constructor.version
+    static version = '1.6.0'; // bump on release; check via document.querySelector('map-quiz').constructor.version
     static get observedAttributes() { return ['src', 'mode', 'heading']; }
 
     constructor() {
@@ -443,9 +481,13 @@
       const n = this._data.regions.length;
       const title = this.getAttribute('heading') || this._data.title || 'Map';
       const hint = `Hover or tap a ${noun}`;
-      const catLabel = { district: 'federal district', territory: 'U.S. territory' };
+      const cap = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+      const catLabel = Object.assign({ district: 'federal district', territory: 'U.S. territory', microstate: 'microstate' }, this._data.categoryLabels || {});
       const desc = (id) => { const c = this._region(id).category; return c ? (catLabel[c] || c) : ''; };
       const hasContext = this._data.regions.some((r) => (r.category || 'state') !== 'state');
+      const legendQuizzed = (this._data.legend && this._data.legend.quizzed) || cap(this._data.prompt || 'region');
+      const legendContext = (this._data.legend && this._data.legend.context) || 'shown, not quizzed';
+      const about = this._mapAbout();
       this._root.innerHTML = `
         <div class="hud">
           <div class="prompt">
@@ -465,11 +507,12 @@
             </div>
             <div class="zoom-hint" data-hint></div>
             <svg class="map learn" part="map" viewBox="${esc(this._data.viewBox)}" role="group" aria-label="${esc(title)} map — every ${esc(noun)} labelled"></svg>
+            ${about.btn}${about.dlg}
           </div>
         </div>
         <div class="toolbar">
           <button class="btn ghost" part="button button-secondary" data-quit>← Back to menu</button>
-          ${hasContext ? `<span class="legend"><i class="sw sw-state"></i>State<i class="sw sw-other"></i>D.C. &amp; territory (shown, not quizzed)</span>` : ''}
+          ${hasContext ? `<span class="legend"><i class="sw sw-state"></i>${esc(legendQuizzed)}<i class="sw sw-other"></i>${esc(legendContext)} (shown, not quizzed)</span>` : ''}
         </div>`;
 
       const svg = this._root.querySelector('svg.map');
@@ -589,11 +632,13 @@
 
       this._root.querySelector('[data-quit]').addEventListener('click', () => this._renderStart());
       this._root.querySelector('[data-quiz]').addEventListener('click', () => this._renderStart());
+      this._wireAbout();
     }
 
     _renderPlay() {
       const noun = this._data.prompt || 'region';
       const isName = this._state.mode === 'name';
+      const about = this._mapAbout();
       this._root.dataset.screen = 'play';
       this._root.innerHTML = `
         <div class="hud">
@@ -607,6 +652,7 @@
             <div class="stat" part="stat"><b part="stat-value" data-time>0:00</b><span part="stat-label">time</span></div>
           </div>
         </div>
+        <div class="toast toast-top" data-toast aria-live="polite"></div>
         <div class="bar"><i part="progress" data-progress></i></div>
         <div class="layout ${isName ? 'has-panel' : ''}">
           <div class="mapbox">
@@ -617,10 +663,10 @@
             </div>
             <div class="zoom-hint" data-hint></div>
             <svg class="map ${isName ? '' : 'pick'}" part="map" viewBox="${esc(this._data.viewBox)}" role="group" aria-label="${esc(this._data.title)} map"></svg>
+            ${about.btn}${about.dlg}
           </div>
           ${isName ? `<div class="panel" part="panel"><h3 part="kicker">Remaining ${esc(plural(noun))}</h3><div class="options" data-options role="listbox" aria-label="Answer choices"></div></div>` : ''}
         </div>
-        <div class="toast" data-toast aria-live="polite"></div>
         <div class="toolbar">
           <button class="btn ghost" part="button button-secondary" data-skip>Skip / reveal</button>
           <button class="btn ghost" part="button button-secondary" data-quit>Change mode</button>
@@ -686,6 +732,7 @@
       };
       this._root.querySelector('[data-skip]').addEventListener('click', () => this._reveal());
       this._root.querySelector('[data-quit]').addEventListener('click', () => this._renderStart());
+      this._wireAbout();
       if (isName) this._renderOptions();
     }
 
@@ -848,6 +895,7 @@
         const scale = Math.min(r.width / W || 0, r.height / H || 0) || (r.width / W) || 1;
         this._pxToUser = scale ? 1 / scale : 1;
         if (this._layoutLabels) this._layoutLabels(st.s, st.tx, st.ty); // labels follow but keep a constant screen size
+        this._syncPanelHeight(r.height);
       };
       this._relayout = () => { if (this._layoutLabels) this._layoutLabels(st.s, st.tx, st.ty); };
       const toVB = (cx, cy) => {
@@ -955,12 +1003,74 @@
       apply();
     }
 
+    // Name mode: when the answer list sits beside the map (two-column layout), cap the
+    // list to the map's rendered height (map card outer height minus the panel heading)
+    // so its bottom lines up with the map instead of overrunning it. In the stacked
+    // single-column layout, clear the cap and let the CSS fallback bound it.
+    _syncPanelHeight(svgH) {
+      const opts = this._root.querySelector('[data-options]');
+      if (!opts) return;
+      const layout = this._root.querySelector('.layout');
+      const panel = this._root.querySelector('.panel');
+      const mapbox = this._root.querySelector('.mapbox');
+      const twoCol = layout && getComputedStyle(layout).gridTemplateColumns.split(' ').length > 1;
+      if (twoCol && svgH > 0 && mapbox && panel) {
+        const cs = getComputedStyle(mapbox);
+        const extra = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) +
+                      parseFloat(cs.borderTopWidth) + parseFloat(cs.borderBottomWidth);
+        const mapOuter = svgH + (extra || 0);
+        // space the heading (and its margin) takes above the list, within the panel
+        const headingOffset = opts.getBoundingClientRect().top - panel.getBoundingClientRect().top;
+        opts.style.maxHeight = Math.max(80, mapOuter - headingOffset) + 'px';
+      } else {
+        opts.style.maxHeight = '';
+      }
+    }
+
+    // "About the data" affordance: a small button in the map's bottom-right corner that
+    // opens a dialog explaining where the geometry came from and noting disputed borders.
+    // Content is per-quiz via the data's `about` (paragraphs) and `sources` ({label,url}).
+    _mapAbout() {
+      const d = this._data || {};
+      const about = Array.isArray(d.about) ? d.about : (d.about ? [d.about] : []);
+      const sources = Array.isArray(d.sources) ? d.sources : [];
+      if (!about.length && !sources.length) return { btn: '', dlg: '' };
+      const btn = `<button type="button" class="map-about" part="about-button" data-about aria-label="About this map's data"><span class="ic" aria-hidden="true">ⓘ</span> About the data</button>`;
+      const paras = about.map((p) => `<p>${esc(p)}</p>`).join('');
+      const src = sources.length
+        ? `<p class="src">Source${sources.length > 1 ? 's' : ''}: ${sources.map((s) => s && s.url
+            ? `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.label || s.url)}</a>`
+            : esc((s && s.label) || '')).join(' · ')}</p>`
+        : '';
+      const dlg = `<dialog class="about-dlg" part="dialog" data-about-dlg aria-label="About this map">
+        <div class="dlg-in">
+          <button type="button" class="dlg-close" part="dialog-close" data-about-close aria-label="Close">✕</button>
+          <h3 part="heading">About this map</h3>
+          ${paras}${src}
+        </div>
+      </dialog>`;
+      return { btn, dlg };
+    }
+    _wireAbout() {
+      const open = this._root.querySelector('[data-about]');
+      const dlg = this._root.querySelector('[data-about-dlg]');
+      if (!open || !dlg) return;
+      open.addEventListener('click', () => {
+        if (typeof dlg.showModal === 'function') { try { dlg.showModal(); return; } catch (_) {} }
+        dlg.setAttribute('open', ''); // fallback for browsers without <dialog>
+      });
+      const close = this._root.querySelector('[data-about-close]');
+      if (close) close.addEventListener('click', () => { dlg.open && dlg.close ? dlg.close() : dlg.removeAttribute('open'); });
+      // click on the backdrop (the dialog element itself, outside .dlg-in) closes it
+      dlg.addEventListener('click', (e) => { if (e.target === dlg && dlg.close) dlg.close(); });
+    }
+
     /* ---------------- helpers ---------------- */
     _region(id) { return this._data.regions.find((r) => r.id === id); }
     // regions that count for the quiz — anything not flagged as a different category.
     // A region with category "district" / "territory" (or quiz:false) is Learn-only.
     _quizRegions() { return this._data.regions.filter((r) => r.quiz !== false && (r.category || 'state') === 'state'); }
-    _setToast(msg, kind) { const t = this._els.toast; t.textContent = msg; t.className = 'toast' + (kind ? ' ' + kind : ''); }
+    _setToast(msg, kind) { const t = this._els.toast; t.textContent = msg; t.classList.remove('good', 'bad'); if (kind) t.classList.add(kind); }
     _updateStats() {
       const st = this._state, total = this._data.regions.length;
       this._els.found.textContent = st.solved.size;

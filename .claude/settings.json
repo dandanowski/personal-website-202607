@@ -86,7 +86,8 @@
       "Bash(cat /tmp/http.log; which http-server npx)",
       "Read(//private/tmp/**)",
       "Bash(python3 -m http.server 8977)",
-      "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt /tmp/http.log)"
+      "Bash(rm -rf /Users/dan/web/dan.danow.ski/2026.07/_site /tmp/build.txt /tmp/http.log)",
+      "Bash(node -e \"console.log\\(require\\('sharp'\\)\\)\")"
     ],
     "additionalDirectories": [
       "/private/tmp"

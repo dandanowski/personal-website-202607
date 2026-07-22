@@ -2,7 +2,23 @@
   "title": "Map Quiz",
   "subtitle": "Choose a quiz to begin.",
   "quizzes": [
-    { "title": "Counties of Ireland", "subtitle": "All 32 counties", "icon": "🍀", "src": "data/ireland.json" },
-    { "title": "United States", "subtitle": "50 states — plus D.C. & territories to learn", "icon": "🗽", "src": "data/us-states.json" }
+    {
+      "title": "Counties of Ireland",
+      "subtitle": "All 32 counties",
+      "icon": "🍀",
+      "src": "data/ireland.json"
+    },
+    {
+      "title": "United States",
+      "subtitle": "50 states — plus D.C. & territories to learn",
+      "icon": "🗽",
+      "src": "data/us-states.json"
+    },
+    {
+      "title": "Countries of Europe",
+      "subtitle": "45 countries — plus microstates to learn",
+      "icon": "🇪🇺",
+      "src": "data/europe.json"
+    }
   ]
 }

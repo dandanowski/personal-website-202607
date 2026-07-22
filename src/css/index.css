@@ -85,6 +85,10 @@ html {
   /* Low-opacity accent wash used behind hovered list rows */
   --accent-wash: color-mix(in srgb, var(--accent) 4.5%, transparent);
 
+  /* Faint hairline for the notebook-grid background — --line itself is
+     opaque, too strong repeated across a whole page, so this dials it back */
+  --grid-line: color-mix(in srgb, var(--line) 35%, transparent);
+
   /* "tokens.json" mockup card grays — decorative demo content, not linked
      to the live theme */
   --mockup-label: #8a8e97; /* tc-group heading / tc-row .hex text */
@@ -99,6 +103,17 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle gridded-notebook texture behind page content. Scoped to <main> —
+   not body — so the translucent header and the always-dark contact/footer
+   band (siblings of <main>, see base.liquid) never show it. Uses --line,
+   so it fades in/out automatically with the light/dark toggle. */
+main {
+  background-image:
+    repeating-linear-gradient(to bottom, var(--grid-line) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px 24px);
+  background-size: 24px 24px;
 }
 
 /* ---- layout helpers ---- */
