@@ -662,6 +662,25 @@ main {
 .site-foot a:hover {
   color: var(--on-dark-fg);
 }
+.foot-right {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.foot-social {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.foot-social a {
+  display: inline-flex;
+  transition: color 0.18s ease;
+}
+.foot-social svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
 
 /* ============ CASE STUDY ============ */
 .case-title {

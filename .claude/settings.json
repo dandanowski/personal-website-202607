@@ -149,7 +149,10 @@
       "Bash(lsof -ti:8186 -sTCP:LISTEN)",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=500,1200 --screenshot=w_after.png \"http://localhost:8187/writing/\")",
       "Bash(python3 -c \"from PIL import Image; Image.open\\('w_after.png'\\).crop\\(\\(0,230,500,760\\)\\).save\\('w_after_crop.png'\\); print\\('ok'\\)\")",
-      "Bash(lsof -ti:8187 -sTCP:LISTEN)"
+      "Bash(lsof -ti:8187 -sTCP:LISTEN)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=500,6000 --screenshot=footm.png \"http://localhost:8188/\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=500,8200 --screenshot=footm4.png \"http://localhost:8188/\")",
+      "Bash(lsof -ti:8188 -sTCP:LISTEN)"
     ],
     "additionalDirectories": [
       "/private/tmp",
