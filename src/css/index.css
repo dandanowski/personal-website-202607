@@ -614,6 +614,31 @@ main {
 .dark .kicker {
   color: var(--green);
 }
+.contact-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.contact-copy {
+  min-width: 0;
+}
+.contact-avatar {
+  flex: none;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--on-dark-border);
+}
+.contact-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform: scale(1.4);
+  transform-origin: 55% 25%;
+}
 .contact h2 {
   font-size: clamp(30px, 4vw, 52px);
   font-weight: 600;
@@ -1525,6 +1550,11 @@ aside.rail .rel a:hover {
   }
   .theme-toggle {
     margin-left: auto;
+  }
+  /* Contact avatar: shrink so it doesn't crowd the copy on narrow screens. */
+  .contact-avatar {
+    width: 132px;
+    height: 132px;
   }
   /* Blog index rows: stack instead of the 3-column grid, which crushes
      the title/tags and pushes the "read" arrow off-screen. */
