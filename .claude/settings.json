@@ -156,7 +156,8 @@
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=500,8200 --screenshot=ctm.png \"http://localhost:8189/\")",
       "Bash(lsof -ti:8189 -sTCP:LISTEN)",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=500,8200 --screenshot=ct2m.png \"http://localhost:8190/\")",
-      "Bash(lsof -ti:8190 -sTCP:LISTEN)"
+      "Bash(lsof -ti:8190 -sTCP:LISTEN)",
+      "Bash(lsof -ti:8191 -sTCP:LISTEN)"
     ],
     "additionalDirectories": [
       "/private/tmp",
