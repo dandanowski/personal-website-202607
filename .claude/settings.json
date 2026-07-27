@@ -166,7 +166,8 @@
       "Bash(python3 -c \"from PIL import Image; Image.open\\('dpost.png'\\).crop\\(\\(0,60,1100,620\\)\\).save\\('dpost_crop.png'\\)\")",
       "Bash(lsof -ti:8192 -sTCP:LISTEN)",
       "Bash(lsof -ti:8193 -sTCP:LISTEN)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(grep -oE '<h2><a class=\"stretched-link\"[^>]*>[^<]+</a></h2>|updated [A-Z][a-z]{2} [0-9]{1,2}, [0-9]{4}' _site/writing/index.html)"
     ],
     "additionalDirectories": [
       "/private/tmp",

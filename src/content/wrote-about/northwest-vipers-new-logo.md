@@ -7,6 +7,14 @@ date: 2024-10-01
 updated: 2026-07-27
 reading: "3 min read"
 topics: ["design"]
+toc:
+  - { id: "s1", label: "Why the rebrand needed to happen" }
+  - { id: "s2", label: "The process" }
+  - { id: "s3", label: "The two ideas" }
+  - { id: "s4", label: "Where it landed" }
+related:
+  - { url: "/wrote-about/components-and-patterns/", title: "Components and patterns" }
+  - { url: "/writing/", title: "More writing" }
 ---
 
 The Northwest Vipers are an amateur American football club based in the northwest of Ireland. I've played for them for a few years now. In 2024 they hit their tenth year as a club, changed their name from the Donegal/Derry Vipers to the Northwest Vipers, and decided it was time to tidy up the brand to match.
