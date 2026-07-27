@@ -12,6 +12,7 @@ layout: layouts/base.liquid
     </div>
     <div class="post-metacol">
       <div><div class="ml">PUBLISHED</div><div class="mv">{{ date | date: "%b %-d, %Y" }}</div></div>
+      {% if updated %}<div><div class="ml">UPDATED</div><div class="mv">{{ updated | date: "%b %-d, %Y" }}</div></div>{% endif %}
       <div><div class="ml">READING</div><div class="mv">{{ reading }}</div></div>
       <div><div class="ml">AUTHOR</div><div class="mv">{{ site.name }}</div></div>
     </div>
