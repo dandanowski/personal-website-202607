@@ -13,7 +13,7 @@ description: Notes on design systems, tokens, and governance — plus product de
 
 <section class="wrap">
   {% for post in collections.posts %}<div class="post-row">
-    <div class="when">{{ post.data.date | date: "%b %-d, %Y" }}<br><span class="rt">{{ post.data.reading }}</span></div>
+    <div class="when">{{ post.data.date | date: "%b %-d, %Y" }}<br><span class="rt">{{ post.data.reading }}</span>{% if post.data.updated %}<br><span class="upd">updated {{ post.data.updated | date: "%b %-d, %Y" }}</span>{% endif %}</div>
     <div>
       <h2><a class="stretched-link" href="{{ post.url }}">{{ post.data.title }}</a></h2>
       <p>{{ post.data.subtitle }}</p>

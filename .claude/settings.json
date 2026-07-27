@@ -164,7 +164,9 @@
       "Bash(python3 -c \"from PIL import Image; Image.open\\('didx.png'\\).crop\\(\\(0,60,1100,760\\)\\).save\\('didx_crop.png'\\)\")",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=1100,1200 --screenshot=dpost.png \"http://localhost:8192/drafts/should-ai-make-the-tool-or-be-the-tool/\")",
       "Bash(python3 -c \"from PIL import Image; Image.open\\('dpost.png'\\).crop\\(\\(0,60,1100,620\\)\\).save\\('dpost_crop.png'\\)\")",
-      "Bash(lsof -ti:8192 -sTCP:LISTEN)"
+      "Bash(lsof -ti:8192 -sTCP:LISTEN)",
+      "Bash(lsof -ti:8193 -sTCP:LISTEN)",
+      "Bash(npm run *)"
     ],
     "additionalDirectories": [
       "/private/tmp",
