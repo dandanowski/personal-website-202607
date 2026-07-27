@@ -1,0 +1,25 @@
+---
+layout: layouts/base.liquid
+title: Drafts — local preview
+devOnly: true
+eleventyExcludeFromCollections: true
+---
+<section class="rule-bottom">
+  <div class="wrap" style="padding-top:66px;padding-bottom:46px">
+    <div class="kicker">drafts · local preview</div>
+    <h1 class="section-h" style="font-size:clamp(30px,4.2vw,48px)">Draft posts</h1>
+    <p style="font-size:clamp(16px,1.7vw,19px);line-height:1.55;color:var(--mute);max-width:60ch;margin:20px 0 0">Only built while the dev server is running (<code>npm start</code>) — these never ship to production. Each links to a full preview under <code>/drafts/&lt;slug&gt;/</code>.</p>
+  </div>
+</section>
+
+<section class="wrap" style="padding-top:8px;padding-bottom:60px">
+  {% for d in collections.drafts %}{% if d.url %}<a class="post-row" href="{{ d.url }}">
+    <div class="when">{% if d.data.date %}{{ d.data.date | date: "%b %-d, %Y" }}{% else %}draft{% endif %}{% if d.data.highlightDraft %}<br><span class="rt">highlighted</span>{% endif %}</div>
+    <div>
+      <h2>{{ d.data.title }}</h2>
+      <p>{{ d.data.subtitle }}</p>
+      <div class="post-tags">{% for t in d.data.topics %}<span class="tag">#{{ t }}</span>{% endfor %}</div>
+    </div>
+    <div class="go">view &nbsp;&rarr;</div>
+  </a>{% endif %}{% endfor %}
+</section>
