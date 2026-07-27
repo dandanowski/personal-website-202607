@@ -74,8 +74,8 @@ One thing I didn't expect: having to describe the behavior precisely enough for 
 
 ## Where things stand
 
-The plugin is working and I'm using it on live projects. It's loadable as a development plugin directly from the manifest, not in the Figma Community yet, but that's the next step.
+The plugin is working, I'm using it on live projects, and it's now live on the [Figma Community](https://www.figma.com/community/plugin/1659343335894002069/primitive-token-generator) — you can install it and run it straight away.
 
 Version 2 scope, roughly: a semantic token layer builder on top of the primitives, multi-mode variable support for light/dark and density, maybe Google Fonts integration for the font family picker.
 
-If you're curious about trying it, [get in touch](mailto:dan.danowski@gmail.com).
+If you give it a try, I'd love to hear how it goes — [get in touch](mailto:dan.danowski@gmail.com).
