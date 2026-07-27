@@ -167,7 +167,12 @@
       "Bash(lsof -ti:8192 -sTCP:LISTEN)",
       "Bash(lsof -ti:8193 -sTCP:LISTEN)",
       "Bash(npm run *)",
-      "Bash(grep -oE '<h2><a class=\"stretched-link\"[^>]*>[^<]+</a></h2>|updated [A-Z][a-z]{2} [0-9]{1,2}, [0-9]{4}' _site/writing/index.html)"
+      "Bash(grep -oE '<h2><a class=\"stretched-link\"[^>]*>[^<]+</a></h2>|updated [A-Z][a-z]{2} [0-9]{1,2}, [0-9]{4}' _site/writing/index.html)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=1200,1300 --screenshot=short_tall.png \"http://localhost:8194/tags/documentation/\")",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('short_tall.png'\\); print\\(im.size\\); im.crop\\(\\(0,1000,1200,1300\\)\\).save\\('short_tall_bottom.png'\\)\")",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=1200,1300 --screenshot=short_after.png \"http://localhost:8194/tags/documentation/\")",
+      "Bash(python3 -c \"from PIL import Image; Image.open\\('short_after.png'\\).crop\\(\\(0,1000,1200,1300\\)\\).save\\('short_after_bottom.png'\\)\")",
+      "Bash(lsof -ti:8194 -sTCP:LISTEN)"
     ],
     "additionalDirectories": [
       "/private/tmp",

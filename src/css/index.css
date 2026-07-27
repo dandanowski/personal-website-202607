@@ -103,6 +103,17 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
+  /* Sticky footer: full-height column so the contact + footer band is
+     pushed to the bottom of the viewport when a page is short on content. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+/* <main> grows to absorb the slack, keeping the contact/footer at the bottom.
+   flex-shrink:0 so tall content is never squashed. */
+main {
+  flex: 1 0 auto;
 }
 
 /* Subtle gridded-notebook texture behind page content. Scoped to <main> —
