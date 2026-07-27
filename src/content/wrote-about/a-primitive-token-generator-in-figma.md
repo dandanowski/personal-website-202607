@@ -5,6 +5,7 @@ short: primitive token generator
 title: "How I stopped setting up design tokens by hand"
 subtitle: "A Figma plugin that handles the primitive layer you always end up building before the real work starts."
 date: 2026-07-23
+updated: 2026-07-27
 reading: "4 min read"
 topics: ["design-tokens", "figma", "tools", "ai"]
 toc:

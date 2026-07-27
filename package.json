@@ -4,7 +4,8 @@
   "description": "Dan Danowski — design systems portfolio. Static 11ty (Eleventy) site, Liquid templates.",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy",
+    "clean": "rm -rf _site",
+    "build": "npm run clean && eleventy",
     "debug": "DEBUG=Eleventy* eleventy"
   },
   "license": "MIT",
