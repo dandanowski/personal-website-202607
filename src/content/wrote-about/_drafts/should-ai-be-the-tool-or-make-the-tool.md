@@ -1,11 +1,10 @@
 ---
 layout: layouts/post.liquid
 tags: draft
-permalink: false
 short: AI working modes
-title: "Should AI make the tool or be the tool?"
+title: "Should AI be the tool or make the tool?"
 subtitle: "A question I keep asking, and a principle I've been applying longer than AI has existed."
-date: 2026-07-27
+date: 2026-07-29
 reading: "6 min read"
 topics: ["ai", "design-systems", "tools", "process"]
 toc:
