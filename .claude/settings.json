@@ -172,7 +172,8 @@
       "Bash(python3 -c \"from PIL import Image; im=Image.open\\('short_tall.png'\\); print\\(im.size\\); im.crop\\(\\(0,1000,1200,1300\\)\\).save\\('short_tall_bottom.png'\\)\")",
       "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --window-size=1200,1300 --screenshot=short_after.png \"http://localhost:8194/tags/documentation/\")",
       "Bash(python3 -c \"from PIL import Image; Image.open\\('short_after.png'\\).crop\\(\\(0,1000,1200,1300\\)\\).save\\('short_after_bottom.png'\\)\")",
-      "Bash(lsof -ti:8194 -sTCP:LISTEN)"
+      "Bash(lsof -ti:8194 -sTCP:LISTEN)",
+      "Bash(cd /Users/dan/web/dan.danow.ski/2026.07; npm run build > /tmp/b.log 2>&1; grep -i error /tmp/b.log; echo \"build ok\")"
     ],
     "additionalDirectories": [
       "/private/tmp",

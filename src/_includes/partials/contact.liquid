@@ -20,4 +20,71 @@
     if (el) { el.textContent = h[Math.floor(Math.random() * h.length)]; }
   })();
   </script>
+  <script>
+  // The portrait dodges the cursor *inside* its fixed circular frame — the
+  // image slides directly away from the pointer, harder the closer it gets,
+  // then eases back to centre. A literal "design systems get out of the way".
+  (function () {
+    var zone = document.querySelector('.contact');
+    var avatar = zone && zone.querySelector('.contact-avatar');
+    var img = avatar && avatar.querySelector('img');
+    if (!img) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var MAX = 44;     // furthest the image slides, px — stays within the scale(1.4)
+                      // overscan so no empty edge enters the circle
+    var RADIUS = 200; // pointer distance (from frame centre) that starts the dodge, px
+    var GAZE = 30;    // deadzone before the portrait glances toward the cursor, px
+
+    // Portrait variants — same crop, five gaze directions. Preloaded so the
+    // swap is instant and flicker-free.
+    var SRC = {
+      fwd: img.getAttribute('src'),
+      up: '/uploads/me_cartoon_up.png',
+      down: '/uploads/me_cartoon_down.png',
+      left: '/uploads/me_cartoon_left.png',
+      right: '/uploads/me_cartoon_right.png'
+    };
+    [SRC.up, SRC.down, SRC.left, SRC.right].forEach(function (s) { new Image().src = s; });
+
+    var tx = 0, ty = 0, gaze = 'fwd', raf = null;
+
+    function apply() {
+      raf = null;
+      img.style.setProperty('--dodge-x', tx.toFixed(1) + 'px');
+      img.style.setProperty('--dodge-y', ty.toFixed(1) + 'px');
+      if (img.getAttribute('src') !== SRC[gaze]) img.setAttribute('src', SRC[gaze]);
+    }
+    function schedule() { if (!raf) raf = requestAnimationFrame(apply); }
+
+    zone.addEventListener('pointermove', function (e) {
+      if (e.pointerType === 'touch') return;
+      // Frame stays put, so its centre is just its (untransformed) rect centre.
+      var r = avatar.getBoundingClientRect();
+      var dx = (r.left + r.width / 2) - e.clientX; // pointer -> centre = "away"
+      var dy = (r.top + r.height / 2) - e.clientY;
+      var dist = Math.hypot(dx, dy);
+      if (dist >= RADIUS || dist === 0) {
+        tx = ty = 0;
+        gaze = 'fwd';
+      } else {
+        var push = (MAX * (1 - dist / RADIUS)) / dist; // stronger as pointer nears
+        tx = dx * push;
+        ty = dy * push;
+        // Glance toward the cursor along whichever axis it's dominant on.
+        // dx > 0 ⇒ pointer left, dy > 0 ⇒ pointer above.
+        var ax = Math.abs(dx), ay = Math.abs(dy);
+        if (ax < GAZE && ay < GAZE) gaze = 'fwd';
+        else if (ay >= ax) gaze = dy > 0 ? 'up' : 'down';
+        else gaze = dx > 0 ? 'left' : 'right';
+      }
+      schedule();
+    });
+    zone.addEventListener('pointerleave', function () {
+      tx = ty = 0;
+      gaze = 'fwd';
+      schedule();
+    });
+  })();
+  </script>
 </section>

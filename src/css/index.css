@@ -639,16 +639,28 @@ main {
   width: 240px;
   height: 240px;
   border-radius: 50%;
-  overflow: hidden;
+  overflow: hidden; /* circular mask — the portrait dodges *inside* this */
   border: 1px solid var(--on-dark-border);
+  /* Matches the portrait's own flat backdrop, so if the image slides far
+     enough to expose an edge, the sliver blends in instead of showing a gap. */
+  background: #d8d6dc;
 }
 .contact-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transform: scale(1.4);
+  /* Resting framing (scale/origin) composed with the cursor-dodge offset;
+     --dodge-x/-y are driven from contact.liquid. */
+  transform: translate(var(--dodge-x, 0px), var(--dodge-y, 0px)) scale(1.4);
   transform-origin: 55% 25%;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-avatar img {
+    transition: none;
+  }
 }
 .contact h2 {
   font-size: clamp(30px, 4vw, 52px);
