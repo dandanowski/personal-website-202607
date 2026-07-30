@@ -1243,6 +1243,8 @@ a.tag:hover {
   letter-spacing: -0.01em;
   margin: 34px 0 12px;
 }
+/* Unordered lists: hanging "›" marker. Marker is absolutely positioned (not a
+   flex child) so inline content — <strong>, links — flows and wraps normally. */
 .post-article ul {
   margin: 0 0 18px;
   padding: 0;
@@ -1251,16 +1253,57 @@ a.tag:hover {
   flex-direction: column;
   gap: 9px;
 }
-.post-article li {
-  display: flex;
-  gap: 12px;
+.post-article ul > li {
+  position: relative;
+  padding-left: 22px;
   font-size: 17px;
   line-height: 1.5;
 }
-.post-article li::before {
+.post-article ul > li::before {
   content: "›";
+  position: absolute;
+  left: 0;
+  top: 0;
   font-family: var(--mono);
   color: var(--accent);
+}
+
+/* Ordered lists (recipe steps, etc.): a mono numbered badge per step, sized
+   to sit in the hanging indent so multi-line steps stay cleanly aligned. */
+.post-article ol {
+  margin: 24px 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.post-article ol > li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 44px;
+  min-height: 28px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.post-article ol > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--chip-bg);
+  border: 1px solid var(--line2);
+  border-radius: 7px;
 }
 .post-article blockquote {
   margin: 38px 0;
@@ -1273,6 +1316,54 @@ a.tag:hover {
   font-weight: 500;
   letter-spacing: -0.01em;
   margin: 0;
+}
+
+/* Data tables in post bodies (recipe ingredient/spec tables, etc.). Framed
+   like the site's other technical surfaces: mono uppercase headers on a faint
+   tint, hairline row rules, a rounded bordered container. */
+.post-article table {
+  width: 100%;
+  margin: 30px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--line2);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.post-article thead th {
+  background: var(--chip-bg);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+  text-align: left;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--line2);
+}
+.post-article tbody td {
+  padding: 11px 16px;
+  color: var(--ink-soft);
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+/* First body row sits directly under the header rule — no double border. */
+.post-article tbody tr:first-child td {
+  border-top: 0;
+}
+/* Lead column (ingredient / label) carries the emphasis. */
+.post-article tbody td:first-child {
+  color: var(--ink);
+  font-weight: 500;
+}
+/* Amounts and other short values read as data. */
+.post-article tbody td:not(:first-child) {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--mute);
 }
 
 figure.anatomy {
