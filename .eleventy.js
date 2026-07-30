@@ -24,17 +24,9 @@ module.exports = function (eleventyConfig) {
       .sort((a, b) => a.data.order - b.data.order)
   );
 
-  // Blog posts, newest first — by effective date (updated if present, else
-  // published), so a meaningfully-revised post resurfaces to the top while
-  // unedited posts keep their original published position.
-  const effectiveDate = (item) => new Date(item.data.updated || item.data.date);
+  // Blog posts, newest first
   eleventyConfig.addCollection("posts", (c) =>
-    c.getFilteredByTag("post").sort(
-      (a, b) =>
-        effectiveDate(b) - effectiveDate(a) ||
-        // Tie on effective date → newer original publish date first
-        new Date(b.data.date) - new Date(a.data.date)
-    )
+    c.getFilteredByTag("post").sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
   );
 
   // Lab experiments — small self-contained modules, alphabetical by title
@@ -82,8 +74,15 @@ module.exports = function (eleventyConfig) {
   });
 
   // Filter any collection down to items carrying a given topic tag.
+  // Items carrying a given topic tag, newest first. Sort on `item.date` (the
+  // resolved Date Eleventy sets for every item) rather than `data.date`, which
+  // is undefined for case studies that omit a front-matter date and would sort
+  // as NaN.
   eleventyConfig.addFilter("withTopic", (items, tag) =>
-    (items || []).filter(isPublishable).filter((item) => (item.data.topics || []).includes(tag))
+    (items || [])
+      .filter(isPublishable)
+      .filter((item) => (item.data.topics || []).includes(tag))
+      .sort((a, b) => b.date - a.date)
   );
 
   return {

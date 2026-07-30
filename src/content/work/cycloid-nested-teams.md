@@ -5,6 +5,7 @@ group: craft
 order: 6
 short: nested teams
 topics: ["product-design", "access-control", "enterprise"]
+date: 2026-01-01 # work date (estimate) — used only to place this case chronologically on tag pages
 title: "Nested teams & permission inheritance"
 kicker: "feature design · enterprise access control"
 lede: "When a contract with the European Union demanded thousands of users, Cycloid's flat team model broke. I designed a nested hierarchy with inherited, role-based permissions — scoping a hard problem into shippable surfaces and flagging every assumption early."

@@ -5,6 +5,7 @@ group: ds
 order: 1
 short: cycloid
 topics: ["design-tokens", "design-system", "ai", "pipeline"]
+date: 2026-04-01 # work end date — used only to place this case chronologically on tag pages
 title: "Machine-readable token architecture & an AI sync pipeline"
 kicker: "design system · ai-assisted pipeline"
 lede: "A three-tier token model with naming built for machine readability, and a Figma → StyleDictionary → code pipeline built with Claude to keep design, code, and documentation in sync."

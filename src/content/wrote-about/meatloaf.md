@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Meatloaf, a grandma specialty"
 subtitle: "The boys love Grandma's meatloaf and who can blame them."

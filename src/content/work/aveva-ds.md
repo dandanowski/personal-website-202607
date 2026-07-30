@@ -5,6 +5,7 @@ group: ds
 order: 3
 short: aveva
 topics: ["design-system", "governance", "enterprise"]
+date: 2022-02-01 # work end date — used only to place this case chronologically on tag pages
 title: "Unifying 150+ products across five tech stacks"
 kicker: "enterprise design system · programme"
 lede: "A board mandate to unify a product suite grown mostly through acquisition. No single component library could span .NET, AngularJS, Angular, React and Bootstrap — so the system's authority had to live in the spec, not the code."

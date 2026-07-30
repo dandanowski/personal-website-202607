@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Carbonara, quick and easy for the kids"
 subtitle: "Not terribly exciting, but very reliable to satisfy the boys."

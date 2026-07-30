@@ -5,6 +5,7 @@ group: ds
 order: 2
 short: atolls
 topics: ["design-tokens", "design-system", "governance", "multi-brand"]
+date: 2025-05-01 # work end date — used only to place this case chronologically on tag pages
 title: "One token architecture across 60+ brands"
 kicker: "multi-brand design system · governance"
 lede: "A white-label SaaS platform where every client needs its own identity inside one shared product. I inherited a system covering ~20% of the suite at 20 brands, and scaled it to full coverage at 60+ — faster to ship, not slower."

@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Beef bolognese, the family favourite"
 subtitle: "Good to make in bulk and use throughout the week. Works in a lasagna too."

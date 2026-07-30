@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Chicken and chorizo jambalaya, just spicy enough"
 subtitle: "A little bit of spice that keeps the kids happy."

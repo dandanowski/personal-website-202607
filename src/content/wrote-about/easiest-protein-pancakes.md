@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Easiest protein pancakes"
 subtitle: "A quick high-protein breakfast. Blend, pour, done."

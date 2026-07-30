@@ -1,12 +1,12 @@
 ---
 layout: layouts/post.liquid
-tags: draft
+tags: post
 short: AI working modes
 title: "Should AI be the tool or make the tool?"
 subtitle: "A question I keep asking, and a principle I've been applying longer than AI has existed."
-date: 2026-07-29
+date: 2026-07-30
 reading: "6 min read"
-topics: ["ai", "design-systems", "tools", "process"]
+topics: ["ai", "design-system", "tools", "process"]
 toc:
   - { id: "s1", label: "Three modes" }
   - { id: "s2", label: "I've seen this before" }
@@ -18,7 +18,7 @@ related:
   - { url: "/writing/", title: "More writing" }
 ---
 
-The question that keeps coming back to me is this: should AI make the tool, or be the tool?
+The question that keeps coming back to me is this: should AI be the tool, or make the tool?
 
 It sounds like a distinction without a difference until you're actually deciding how to spend an afternoon. Then it matters quite a bit. And if I'm being straight about it, the question itself is newer than the principle underneath it — I've been asking something like this about every piece of tooling I've picked up, for as long as I've been doing this work.
 

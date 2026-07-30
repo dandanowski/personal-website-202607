@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Bolognese orzo, straightforward and fairly dense"
 subtitle: "A quick one-pot dish that comes together in about 30 minutes."

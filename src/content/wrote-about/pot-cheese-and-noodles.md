@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Pot cheese and noodles, a grandma specialty"
 subtitle: "Hoping this goes over like the carbonara."

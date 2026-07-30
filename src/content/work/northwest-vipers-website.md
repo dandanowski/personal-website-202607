@@ -5,6 +5,7 @@ group: craft
 order: 5
 short: northwest vipers
 topics: ["product-design", "front-end", "content-strategy"]
+date: 2024-09-01 # work date (estimate) — used only to place this case chronologically on tag pages
 title: "Northwest Vipers — a website redesign the club can own"
 kicker: "product design · front-end · content strategy"
 lede: "A broken WordPress site rebuilt from scratch as a static 11ty + Markdown platform non-technical volunteers maintain themselves — and an information architecture that finally represents all four squads equally."

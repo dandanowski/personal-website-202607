@@ -1,7 +1,6 @@
 ---
 layout: layouts/post.liquid
-tags: draft
-permalink: false
+tags: recipe
 topics: ["recipe"]
 title: "Easy high-protein waffles"
 subtitle: "Blend everything together, pour into a waffle iron, done."

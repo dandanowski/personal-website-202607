@@ -21,7 +21,7 @@ eleventyComputed:
 <section class="wrap" style="padding-top:8px;padding-bottom:60px">
   {% assign tagged = collections.all | withTopic: tag %}
   {% for item in tagged %}<a class="post-row" href="{{ item.url }}">
-    <div class="when">{% if item.data.tags contains "case" %}case study{% else %}writing{% endif %}</div>
+    <div class="when">{% if item.data.tags contains "case" %}case study{% else %}{{ item.data.date | date: "%b %-d, %Y" }}<br><span class="rt">{{ item.data.reading }}</span>{% if item.data.updated %}<br><span class="upd">updated {{ item.data.updated | date: "%b %-d, %Y" }}</span>{% endif %}{% endif %}</div>
     <div>
       <h2>{{ item.data.title }}</h2>
       <p>{{ item.data.lede | default: item.data.subtitle }}</p>
