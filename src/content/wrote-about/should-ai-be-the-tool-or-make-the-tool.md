@@ -26,7 +26,7 @@ It sounds like a distinction without a difference until you're actually deciding
 
 The way I think about it now, there are three distinct ways to work with AI, and confusing them is where most of the frustration comes from.
 
-*AI as thinking partner.* High context, high variability, different every time. Human judgement is irreplaceable; AI accelerates and challenges it. CV tailoring is a good example: every application is different, every context requires different emphasis. There's no shortcut to understanding the role, the company, the gap between where you are and what they're looking for. AI is useful here because it holds context, challenges assumptions, and pushes back when the logic is weak. But you can't automate it, and you can't build it once and walk away. It's collaborative every single time.
+*AI as thinking partner.* High context, high variability, different every time. Human judgement is irreplaceable; AI accelerates and challenges it. This is where I use it as an interviewer, a devil's advocate, a way to stress-test an idea before committing to it. More practically, it's a way to get past the blank page. When I have an early idea for a personal project or a feature at work, going back and forth helps tease out what I'm actually trying to do and why. The back and forth gets things moving when the thinking is stuck; it's harder to stay inert when something is pushing back. The same dynamic applies anywhere the thinking has to happen before the writing, or before the decision. You can't automate it, and you can't build it once and walk away. It's collaborative every single time.
 
 *AI as tool builder.* Repetitive, rule-based, predictable output. Build it once, use it forever. The Primitive Token Generator is this — I directed Claude to build a Figma plugin that generates color ramps, type scales, spacing systems. I did that work once. Now I use the plugin on every project, and the accumulated value compounds. The AI wrote the code; the real output was the reusable tool.
 
@@ -44,7 +44,9 @@ The same pattern shows up with JavaScript frameworks. Bootstrap, Angular, React 
 
 Then there are tooling switches: Adobe XD to Figma, Angular to React. These don't just require learning new tools — they require understanding, often in retrospect, which parts of your old workflow were genuine process and which were workarounds for the previous tool's limitations. Get that wrong and the migration is harder than it should be. You end up solving problems that only existed because of the tool you just left.
 
-The principle that connects all of this: understand what the tool is doing at the level below the abstraction. Not to avoid using the tool — use the tool — but so you know what you're actually building, and what you'd have if the tool disappeared tomorrow.
+When CSS-in-JS became a React-era pattern, some developers put styles in JavaScript because they didn't like CSS. Not for principled reasons, just preference. HTML for structure, CSS for styling, JS for behaviour: that separation exists for good reasons, and routing around it because one layer is inconvenient tends to surface those reasons later. If all you have is a hammer, everything looks like a nail.
+
+The principle that connects all of this: understand what the tool is doing at the level below the abstraction. Not to avoid using the tool, but so you know what you're actually building, and what you'd have if the tool disappeared tomorrow. Sometimes that clarity leads somewhere harder: the tool isn't the right choice at all.
 
 That's exactly the question I keep asking about AI. Is it so embedded in my workflow that I'm too reliant on it? What if I run out of credits? What if the service goes down? If AI sits in the middle of a workflow that isn't itself AI-powered, it becomes an unrelated bottleneck — the same problem as a framework whose removal would break the app it was supposed to accelerate.
 
@@ -72,8 +74,6 @@ The output is real and useful. The process was the learning. Both things are tru
 
 ## Where this leaves things
 
-There's a version of this problem I haven't mentioned yet. When CSS-in-JS became a React-era pattern, some developers put styles in JavaScript because they didn't like CSS. Not for principled reasons — just preference. HTML for structure, CSS for styling, JS for behaviour: that separation exists for good reasons, and routing around it because one layer is inconvenient tends to surface those reasons later. If all you have is a hammer, everything looks like a nail.
-
-I think about that when I watch people reach for AI by default — not because it's the right tool, but because it's the familiar one. The framework I've described here is partly an answer to that: it forces a prior question before you open a chat window. What kind of task is this, actually? One-off, recurring, or complex judgement? Sometimes the honest answer is: none of the above, and AI isn't what this needs.
+I think about those examples when I watch people reach for AI by default, not because it's the right tool, but because it's the familiar one. The framework I've described here is partly an answer to that: it forces a prior question before you open a chat window. What kind of task is this, actually? One-off, recurring, or complex judgement? Sometimes the honest answer is: none of the above, and AI isn't what this needs.
 
 The hardest part isn't using AI well. It's knowing which version you need — and being willing to admit when the answer is none of them.
