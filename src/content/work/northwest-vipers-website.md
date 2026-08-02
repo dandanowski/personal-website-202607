@@ -30,7 +30,7 @@ next:
     <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em">before / after &mdash; homepage</div>
     <a href="https://northwestvipers.com" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--mute);text-decoration:none;letter-spacing:0.02em">live at northwestvipers.com &nearr;</a>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+  <div class="rgrid-2" style="gap:18px">
     <figure style="margin:0">
       <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px">
         <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--mute);border:1px solid var(--line2);border-radius:3px;padding:3px 10px">BEFORE</span>
@@ -65,7 +65,7 @@ next:
 
 <div style="padding:56px 0 56px;border-bottom:1px solid var(--line)">
   <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;margin-bottom:22px">the rebuilt site &mdash; depth restored</div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+  <div class="rgrid-3">
     <figure style="margin:0">
       <div style="border:1px solid var(--line2);border-radius:7px;overflow:hidden;background:#000">
         <div style="display:flex;align-items:center;gap:6px;padding:8px 11px;background:var(--card);border-bottom:1px solid var(--line)">

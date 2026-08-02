@@ -31,7 +31,7 @@ next:
     <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em">the documented system</div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute)">design.aveva.com/build</div>
   </div>
-  <div style="display:grid;grid-template-columns:minmax(0,540px) 1fr;gap:44px;align-items:center">
+  <div class="rgrid-imgtext">
     <img src="/uploads/aveva_ds-home.png" alt="AVEVA Design System Build — home" style="display:block;width:100%;border:1px solid var(--line2);border-radius:8px">
     <div style="max-width:44ch">
       <h3 style="font-size:21px;font-weight:600;letter-spacing:-0.01em;margin:0 0 12px">&ldquo;Design, Prototype, Build&rdquo;</h3>
@@ -48,7 +48,7 @@ next:
 
 <div class="case-sec"><div class="si">02 / spec-first, stack-agnostic</div><div class="case-body" style="max-width:none">
 <div style="max-width:64ch"><p>The structural decision: make the system agnostic to any one technology. Not a React library — a <strong>specification</strong> of tokens, guidelines, patterns and behaviours each team implements in their own stack. Authority in the spec, not the code.</p></div>
-<div class="pipe"><div style="display:flex;flex-direction:column;align-items:center;gap:16px"><div class="node hot" style="min-width:230px;text-align:center"><div class="nl">THE SPEC</div><div class="nv">tokens · guidelines · patterns · behaviours</div></div><div style="font-family:var(--mono);color:var(--accent);letter-spacing:0.34em;font-size:15px">&darr; &darr; &darr; &darr; &darr;</div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:100%"><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">.NET</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">AngularJS</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">Angular</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">React</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">Bootstrap</div></div></div><div class="note" style="text-align:center">teams implementing the same spec independently converge on the same result</div></div></div>
+<div class="pipe"><div style="display:flex;flex-direction:column;align-items:center;gap:16px"><div class="node hot" style="min-width:230px;text-align:center"><div class="nl">THE SPEC</div><div class="nv">tokens · guidelines · patterns · behaviours</div></div><div style="font-family:var(--mono);color:var(--accent);letter-spacing:0.34em;font-size:15px">&darr; &darr; &darr; &darr; &darr;</div><div class="rgrid-flow"><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">.NET</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">AngularJS</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">Angular</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">React</div></div><div class="node" style="text-align:center"><div class="nv" style="font-size:12.5px">Bootstrap</div></div></div><div class="note" style="text-align:center">teams implementing the same spec independently converge on the same result</div></div></div>
 <blockquote class="pull"><p>A spec-first system that works across five tech stacks is already platform-agnostic by necessity — adding AI tools as a sixth consumer is an extension, not a reinvention.</p></blockquote>
 </div></div>
 
@@ -63,7 +63,7 @@ next:
     <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em">spec made tangible</div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute)">component library · component guidance</div>
   </div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+  <div class="rgrid-2">
     <figure style="margin:0">
       <div style="height:440px;border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--chip);display:flex;align-items:center;justify-content:center">
         <img src="/uploads/aveva_ds-adobe_xd_plugin.png" alt="AVEVA Design System Adobe XD plugin" style="max-width:100%;max-height:100%;object-fit:contain;display:block">
@@ -89,7 +89,7 @@ next:
     <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em">levels of adoption, published</div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute)">/build/overview/adoption</div>
   </div>
-  <div style="display:grid;grid-template-columns:minmax(0,540px) 1fr;gap:44px;align-items:center">
+  <div class="rgrid-imgtext">
     <img src="/uploads/aveva_ds-adoption.png" alt="AVEVA Design System adoption levels" style="display:block;width:100%;border:1px solid var(--line2);border-radius:8px">
     <div style="max-width:44ch">
       <h3 style="font-size:21px;font-weight:600;letter-spacing:-0.01em;margin:0 0 12px">Published, measurable compliance</h3>

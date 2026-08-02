@@ -1093,6 +1093,14 @@ blockquote.pull p {
     grid-template-columns: 1fr;
   }
 }
+/* small node/badge rows (e.g. stack lists) — fluid instead of a fixed
+   column count, so short labels wrap gracefully without a breakpoint */
+.rgrid-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
 
 /* stack tags */
 .tagrow {
@@ -1738,17 +1746,51 @@ aside.rail .rel a:hover {
   }
   .trio,
   .demos,
-  .ba,
-  .otable .h,
-  .otable .r {
+  .ba {
     grid-template-columns: 1fr;
   }
+  /* Outcome table: collapsing straight to one column loses which number
+     is BEFORE and which is AFTER once the header row is hidden. Instead,
+     turn each row into a small card — label on top, before/after values
+     side by side with an inline mono tag so the comparison still reads. */
   .otable .h {
     display: none;
   }
+  .otable .r {
+    grid-template-columns: 1fr 1fr;
+    padding: 16px 18px;
+    row-gap: 10px;
+    column-gap: 14px;
+  }
+  .otable .r > div {
+    padding: 0;
+  }
+  .otable .r .lbl {
+    grid-column: 1 / -1;
+  }
   .otable .r > div + div {
     border-left: 0;
-    border-top: 1px solid var(--line);
+  }
+  .otable .r .b,
+  .otable .r .a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .otable .r .b::before,
+  .otable .r .a::before {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .otable .r .b::before {
+    content: "before";
+    color: var(--mute);
+  }
+  .otable .r .a::before {
+    content: "after";
+    color: var(--accent);
   }
   .pipe .flow {
     flex-direction: column;
