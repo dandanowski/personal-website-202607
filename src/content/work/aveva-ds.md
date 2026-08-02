@@ -52,10 +52,22 @@ next:
 <blockquote class="pull"><p>A spec-first system that works across five tech stacks is already platform-agnostic by necessity — adding AI tools as a sixth consumer is an extension, not a reinvention.</p></blockquote>
 </div></div>
 
-<div class="case-sec"><div class="si">03 / extending material</div><div class="case-body">
-<p>Material Design was built for consumer apps. AVEVA's products are operational software — engineers and operators in high-stakes, industrial environments. I governed the Material foundation and added a documented extension layer for what it didn't cover:</p>
-<ul><li>Alarm states and operational status indicators</li><li>High-density data displays for control-room contexts</li><li>Safety-critical interaction and visual conventions</li></ul>
-<p class="muted">The layer said clearly which patterns were Material-standard and which were AVEVA-specific — so teams knew what they were working with, and why.</p>
+<div class="case-sec"><div class="si">03 / extending material</div><div class="case-body" style="max-width:none">
+<div style="max-width:64ch"><p>Material Design was built for consumer apps. AVEVA's products are operational software — engineers and operators in high-stakes, industrial environments. I governed the Material foundation and added a documented extension layer for what it didn't cover:</p>
+<ul><li>Alarm states and operational status indicators</li><li>High-density data displays for control-room contexts</li><li>Safety-critical interaction and visual conventions</li></ul></div>
+<figure style="margin:24px 0 0">
+  <div style="border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+    <img src="/uploads/aveva-ds-control-room-photo.png" alt="A control-room demo space with wall-mounted monitors — the operational context AVEVA's products run in" style="display:block;width:100%">
+  </div>
+  <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:11px;line-height:1.5">The context these products run in — control rooms, not consumer screens.</figcaption>
+</figure>
+<figure style="margin:26px 0 0">
+  <div style="border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+    <img src="/uploads/aveva-ds-control-room-extensions.png" alt="Real AVEVA product dashboards — high-density data, incident maps, asset monitoring, production line status" style="display:block;width:100%">
+  </div>
+  <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:11px;line-height:1.5">The extension layer in production — high-density dashboards, incident maps and status boards Material alone didn't cover.</figcaption>
+</figure>
+<div style="max-width:64ch"><p class="muted">The layer said clearly which patterns were Material-standard and which were AVEVA-specific — so teams knew what they were working with, and why.</p></div>
 </div></div>
 
 <div style="padding:62px 0 56px;border-bottom:1px solid var(--line)">
