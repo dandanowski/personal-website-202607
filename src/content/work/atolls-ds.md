@@ -2,7 +2,7 @@
 layout: layouts/case.liquid
 tags: case
 group: ds
-order: 2
+order: 1
 short: atolls
 topics: ["design-tokens", "design-system", "governance", "multi-brand"]
 date: 2025-05-01 # work end date — used only to place this case chronologically on tag pages
@@ -19,14 +19,14 @@ meta:
     }
   - { label: "PERIOD", value: "Mar 2022 – May 2025" }
 card:
-  n: "02"
+  n: "01"
   kicker: "multi-brand design system · governance"
   title: "One token architecture across 60+ brands"
   blurb: "Re-architected a flat token model into a three-tier default/override system, automated the Figma-to-code handoff, and split shared components from product-owned patterns to remove the DS bottleneck."
   metric: "20 → 60+ brands · onboarding 2 wks → 2 days"
   role: "Head of Design / DS Manager"
 next:
-  label: "next case — 03"
+  label: "next case — 02"
   title: "Unifying 150+ products across five tech stacks"
   url: "/work/aveva-ds/"
 ---

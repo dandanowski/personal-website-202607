@@ -2,7 +2,7 @@
 layout: layouts/case.liquid
 tags: case
 group: ds
-order: 1
+order: 3
 short: cycloid
 topics: ["design-tokens", "design-system", "ai", "pipeline"]
 date: 2026-04-01 # work end date — used only to place this case chronologically on tag pages
@@ -15,16 +15,16 @@ meta:
   - { label: "STACK", value: "Figma Variables · StyleDictionary · VueJS · Histoire · Claude", mono: "mono" }
   - { label: "PERIOD", value: "Oct 2025 – Apr 2026" }
 card:
-  n: "01"
+  n: "03"
   kicker: "design system · ai-assisted pipeline"
   title: "Machine-readable token architecture & an AI sync pipeline"
   blurb: "A three-tier token model with naming built for machine readability, plus a Figma → StyleDictionary → code pipeline built with Claude to keep design, code, and docs in sync."
   metric: "Pipeline rebuilt in under 2 weeks"
   role: "Senior Product Designer"
 next:
-  label: "next case — 02"
-  title: "One token architecture across 60+ brands"
-  url: "/work/atolls-ds/"
+  label: "next case — product craft"
+  title: "Northwest Vipers — website redesign"
+  url: "/work/northwest-vipers-website/"
 ---
 {% include "partials/bf-cycloid.liquid" %}
 

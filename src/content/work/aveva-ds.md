@@ -2,7 +2,7 @@
 layout: layouts/case.liquid
 tags: case
 group: ds
-order: 3
+order: 2
 short: aveva
 topics: ["design-system", "governance", "enterprise"]
 date: 2022-02-01 # work end date — used only to place this case chronologically on tag pages
@@ -15,16 +15,16 @@ meta:
   - { label: "FOUNDATION", value: "Material Design v2 · design tokens · Azure DevOps · SAFe", mono: "mono" }
   - { label: "PERIOD", value: "2015 – Feb 2022" }
 card:
-  n: "03"
+  n: "02"
   kicker: "enterprise design system · programme"
   title: "Unifying 150+ products across five tech stacks"
   blurb: "A spec-first, stack-agnostic system on a governed Material foundation with an industrial extension layer, tiered adoption tracked at programme level, and a dedicated engineer + QA I made the case to hire."
   metric: "150+ products · 5 stacks · 40+ components"
   role: "Senior UX Eng / DS Lead"
 next:
-  label: "next case — product craft"
-  title: "Northwest Vipers — website redesign"
-  url: "/work/northwest-vipers-website/"
+  label: "next case — 03"
+  title: "Machine-readable token architecture & an AI sync pipeline"
+  url: "/work/cycloid-ds/"
 ---
 <div style="padding:56px 0 60px;border-bottom:1px solid var(--line)">
   <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:22px">
