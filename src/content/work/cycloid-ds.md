@@ -28,9 +28,15 @@ next:
 ---
 {% include "partials/bf-cycloid.liquid" %}
 
-<div class="case-sec"><div class="si">01 / the problem</div><div class="case-body">
-<p>Cycloid was built on the Vuetify component library with a token structure that had drifted out of sync between design and engineering. Developers were reaching for primitive-level tokens or hard-coded values throughout the codebase, which made the system inflexible.</p>
-<p class="muted">The immediate consequence: shipping a dark-mode toggle wasn't feasible without significant rework. That was the symptom — the cause was structural.</p>
+<div class="case-sec"><div class="si">01 / the problem</div><div class="case-body" style="max-width:none">
+<div style="max-width:64ch"><p>Cycloid was built on the Vuetify component library with a token structure that had drifted out of sync between design and engineering. Developers were reaching for primitive-level tokens or hard-coded values throughout the codebase, which made the system inflexible.</p>
+<p class="muted">The immediate consequence: shipping a dark-mode toggle wasn't feasible without significant rework. That was the symptom — the cause was structural.</p></div>
+<figure style="margin:26px 0 0">
+  <div style="border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+    <img src="/uploads/cycloid-ds-color-tokens-recovered.png" alt="Colour tokens — recovered: a forensic audit of surviving token bindings, showing no semantic layer anywhere in the set" style="display:block;width:100%">
+  </div>
+  <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:11px;line-height:1.5">The drift, documented — recovered primitives with no semantic layer above them. 43 of 76 source tokens had no surviving reference at all.</figcaption>
+</figure>
 </div></div>
 
 <div class="case-sec"><div class="si">02 / token architecture</div><div class="case-body" style="max-width:none">
@@ -43,6 +49,12 @@ next:
 <div style="max-width:64ch"><p>With the structure in place, I built an AI-assisted pipeline to keep three sources of truth in sync. Claude built the tooling; once running, the pipeline operates as part of the normal build with no AI involvement.</p></div>
 <div class="pipe"><div class="flow"><div class="node"><div class="nl">SOURCE</div><div class="nv">Figma Variables</div></div><span class="arr">&rarr;</span><div class="node hot"><div class="nl">TRANSFORM</div><div class="nv">StyleDictionary</div></div><span class="arr">&rarr;</span><div class="node"><div class="nl">OUTPUT</div><div class="nv">VueJS · Histoire</div></div></div><div class="note">built with Claude: StyleDictionary transforms + a custom Figma plugin to keep Variables in sync with the pipeline</div></div>
 <blockquote class="pull"><p>I'd built the equivalent pipeline manually in a previous role. With Claude, this version shipped in under two weeks — a concrete baseline for what AI-augmented delivery actually buys you.</p></blockquote>
+<figure style="margin:26px 0 0">
+  <div style="border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+    <img src="/uploads/cycloid-ds-histoire-output.png" alt="Histoire documentation site showing the Core token tier — core-color-ui-primary ramp with LCH values and CSS variable names" style="display:block;width:100%">
+  </div>
+  <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:11px;line-height:1.5">The pipeline's real output — Histoire, showing the Core tier ramp the semantic layer builds on.</figcaption>
+</figure>
 </div></div>
 
 <div class="case-sec"><div class="si">04 / outcome</div><div class="case-body">
