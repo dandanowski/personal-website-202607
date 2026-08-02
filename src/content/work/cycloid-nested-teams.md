@@ -40,16 +40,53 @@ next:
 
 <div class="case-sec"><div class="si">04 / design decisions</div><div class="case-body" style="max-width:none">
 <div style="max-width:64ch"><p>With no defined limit from the Product Owner, I made reasonable assumptions to keep moving — and flagged them explicitly.</p></div>
+<div style="margin-bottom:32px">{% include "partials/wf-permissions.liquid" %}</div>
 <div class="demos" style="margin-bottom:24px"><div style="background:var(--tint)"><div class="a" style="color:var(--accent)">ASSUMPTION · FLAGGED</div><p style="font-size:14.5px">~15–20 members per team, up to <strong>4 levels deep</strong>.</p></div><div style="background:var(--tint)"><div class="a" style="color:var(--accent)">ASSUMPTION · FLAGGED</div><p style="font-size:14.5px">Permissions apply at <strong>project level</strong> — unblocking user-facing design from complex entity logic.</p></div></div>
-<div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:20px;align-items:start">
+<div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:0.03em;margin-bottom:12px">resolved &mdash; the tree, and the three surfaces it feeds</div>
+<div class="rgrid-tree">
 <div class="pipe" style="margin:0"><div style="font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:0.05em;margin-bottom:16px">TEAMS — COLLAPSIBLE TREE</div><div style="font-family:var(--mono);font-size:13px;line-height:2"><div style="display:flex;justify-content:space-between"><span><span style="color:var(--accent)">▾</span> Commission</span><span style="color:var(--mute);font-size:11.5px">214</span></div><div style="display:flex;justify-content:space-between;padding-left:20px"><span><span style="color:var(--accent)">▾</span> Directorate A</span><span style="color:var(--mute);font-size:11.5px">96</span></div><div style="display:flex;justify-content:space-between;padding-left:40px"><span><span style="color:#9aa0ab">▸</span> Platform</span><span style="color:var(--mute);font-size:11.5px">41</span></div><div style="display:flex;justify-content:space-between;padding-left:40px"><span><span style="color:#9aa0ab">▸</span> Security</span><span style="color:var(--mute);font-size:11.5px">23</span></div><div style="display:flex;justify-content:space-between;padding-left:20px"><span><span style="color:#9aa0ab">▸</span> Directorate B</span><span style="color:var(--mute);font-size:11.5px">118</span></div></div></div>
 <div style="display:flex;flex-direction:column;gap:14px"><div style="border:1px solid var(--line);border-radius:6px;padding:18px 20px"><div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.05em;margin-bottom:7px">SURFACE 01 · TEAMS PAGE</div><p style="margin:0;font-size:14px;line-height:1.55;color:var(--mute)">A collapsible tree; each node counts members across itself and all child teams.</p></div><div style="border:1px solid var(--line);border-radius:6px;padding:18px 20px"><div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.05em;margin-bottom:7px">SURFACE 02 · USER PROFILE</div><p style="margin:0;font-size:14px;line-height:1.55;color:var(--mute)">Which teams a user belongs to, which permissions they hold and <em>where they originate</em> (inherited vs. direct), and their projects.</p></div><div style="border:1px solid var(--line);border-radius:6px;padding:18px 20px"><div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.05em;margin-bottom:7px">SURFACE 03 · PROJECT VIEW</div><p style="margin:0;font-size:14px;line-height:1.55;color:var(--mute)">Which teams are assigned to a project, and the membership of those teams.</p></div></div>
 </div>
 </div></div>
 
+<div style="padding:62px 0 56px;border-bottom:1px solid var(--line)">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:22px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em">designed — surface 02, user profile</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute)">profile / teams · profile / ownership</div>
+  </div>
+  <div class="rgrid-2">
+    <figure style="margin:0">
+      <div style="border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+        <img src="/uploads/cycloid-nested-teams-assigned-teams.png" alt="Cycloid user profile — Assigned Teams tab" style="display:block;width:100%">
+      </div>
+      <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:13px;line-height:1.5">Assigned Teams — every team a user belongs to, with role and headcount.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+        <img src="/uploads/cycloid-nested-teams-ownership.png" alt="Cycloid user profile — Ownership tab" style="display:block;width:100%">
+      </div>
+      <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:13px;line-height:1.5">Ownership — direct and inherited entity ownership, listed side by side.</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div style="padding:56px 0 56px;border-bottom:1px solid var(--line)">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;margin-bottom:22px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em">designed — surface 03, project view</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute)">project / teams</div>
+  </div>
+  <div class="rgrid-imgtext">
+    <img src="/uploads/cycloid-nested-teams-project-teams.png" alt="Cycloid project settings — Teams tab" style="display:block;width:100%;border:1px solid var(--line2);border-radius:8px">
+    <div style="max-width:44ch">
+      <h3 style="font-size:21px;font-weight:600;letter-spacing:-0.01em;margin:0 0 12px">Same model, reused</h3>
+      <p style="font-size:15.5px;line-height:1.62;color:var(--mute);margin:0">The project's Teams tab pulls the same team and membership data as the org-level tree and the user profile &mdash; one model surfaced three ways, not three separate builds.</p>
+    </div>
+  </div>
+</div>
+
 <div class="case-sec"><div class="si">05 / outcome</div><div class="case-body">
-<p>The user-facing work shipped and landed well. When the project moved into entity-level permissions — how components and environments behave under the model — it hit ambiguity at the product-definition level.</p>
-<p class="muted">That was a product problem, not a design-execution one. The design correctly identified and surfaced the complexity early, rather than absorbing it silently.</p>
+<p>The three surfaces resolved cleanly and held together as one connected model — the tree, the profile and the project view all reflecting the same team data. Entity-level permissions — how components and environments behave under the model — hit ambiguity at the product-definition level along the way, and the design surfaced that complexity early rather than absorbing it silently.</p>
+<p class="muted">The designs weren't ultimately shipped. That doesn't change what the process demonstrated: a complex enterprise problem scoped into deliverable surfaces, with assumptions flagged rather than guessed at.</p>
 </div></div>
 
 <div class="case-sec demos-sec" style="border-bottom:0"><div class="si">what this<br>demonstrates</div><div class="case-body" style="max-width:none"><div class="demos"><div><div class="a">&rarr;</div><p>Autonomous decision-making under ambiguity, with assumptions flagged to stakeholders.</p></div><div><div class="a">&rarr;</div><p>Scoping a complex enterprise problem into deliverable surfaces.</p></div><div><div class="a">&rarr;</div><p>Systems thinking across connected views — teams, users, projects.</p></div><div><div class="a">&rarr;</div><p>Pragmatic unblocking without waiting for perfect information.</p></div></div></div></div>

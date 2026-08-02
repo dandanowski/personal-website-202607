@@ -1056,6 +1056,44 @@ blockquote.pull p {
   font-weight: 600;
 }
 
+/* responsive comparison/illustration grids — used for before/after panels,
+   wireframe passes and screenshot pairs in case studies. Collapse to a
+   single column well before .case-sec does, since the content here
+   (screenshots, mockups, wireframe boxes) needs more room per column
+   than plain text before it's illegible. */
+.rgrid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.rgrid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+.rgrid-tree {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 20px;
+  align-items: start;
+}
+.rgrid-imgtext {
+  display: grid;
+  grid-template-columns: minmax(0, 540px) 1fr;
+  gap: 44px;
+  align-items: center;
+}
+@media (max-width: 820px) {
+  .rgrid-2,
+  .rgrid-3,
+  .rgrid-tree,
+  .rgrid-imgtext {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* stack tags */
 .tagrow {
   display: flex;
