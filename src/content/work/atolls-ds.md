@@ -46,12 +46,32 @@ next:
 <div class="case-sec"><div class="si">03 / automated pipeline</div><div class="case-body" style="max-width:none">
 <div style="max-width:64ch"><p>I replaced the copy-paste handoff with an automated pipeline. Engineers stopped copying values from Figma; design changes propagated automatically, and silent drift was eliminated.</p></div>
 <div class="pipe"><div class="flow"><div class="node"><div class="nl">FIGMA</div><div class="nv">TokensStudio</div></div><span class="arr">&rarr;</span><div class="node"><div class="nl">W3C DTCG</div><div class="nv">JSON in git</div></div><span class="arr">&rarr;</span><div class="node hot"><div class="nl">TRANSFORM</div><div class="nv">StyleDictionary</div></div><span class="arr">&rarr;</span><div class="node"><div class="nl">OUTPUT</div><div class="nv">Figma Variables · CSS</div></div></div></div>
+<figure style="margin:26px 0 28px">
+  <div style="border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+    <img src="/uploads/atolls-token-pipeline.png" alt="Atolls token build pipeline — PICO, team and brand tiers translated through Style Dictionary to CSS Variables, Flutter and the style guide" style="display:block;width:100%">
+  </div>
+  <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:11px;line-height:1.5">The full build, mapped — PICO through team and brand tiers, translated and published to CSS Variables, Flutter and the style guide.</figcaption>
+</figure>
 <div style="max-width:64ch;display:flex;gap:16px;align-items:center;background:var(--tint);border:1px solid var(--line);border-radius:6px;padding:18px 22px"><div style="font-family:var(--mono);font-size:clamp(22px,3vw,32px);font-weight:600;color:var(--accent);white-space:nowrap">2 wks → 2 days</div><div style="font-size:14px;color:var(--mute);line-height:1.5">Brand onboarding time, before and after the pipeline.</div></div>
 </div></div>
 
 <div class="case-sec"><div class="si">04 / governance</div><div class="case-body" style="max-width:none">
 <div style="max-width:64ch"><p>The harder problem wasn't components — it was keeping the system coherent across sixty client configurations and three years. I redefined what belonged in the shared system at all.</p></div>
 <div class="demos"><div><div class="a" style="color:var(--accent)">OWNED BY DS</div><h4 style="font-size:18px;font-weight:600;margin:6px 0 9px">Components</h4><p>Universal UI any user might meet anywhere — buttons, inputs, dialogs. Built to one standard, versioned centrally.</p></div><div><div class="a" style="color:var(--accent)">OWNED BY PRODUCT</div><h4 style="font-size:18px;font-weight:600;margin:6px 0 9px">Patterns</h4><p>Product-specific compositions carrying business logic. Teams iterate freely; proven patterns can be promoted into the library — earned, not assumed.</p></div></div>
+<div class="rgrid-2" style="margin:24px 0 28px">
+  <figure style="margin:0">
+    <div style="aspect-ratio:1954/1930;border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+      <img src="/uploads/atolls-component-library.png" alt="Atolls component library sticker sheet — buttons, dialogs, tabs, accordions, forms, pagination" style="display:block;width:100%;height:100%;object-fit:cover">
+    </div>
+    <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:11px;line-height:1.5">Components — owned by DS. Universal UI, one standard, versioned centrally.</figcaption>
+  </figure>
+  <figure style="margin:0">
+    <div style="aspect-ratio:1954/1930;border:1px solid var(--line2);border-radius:8px;overflow:hidden">
+      <img src="/uploads/atolls-product-pattern.png" alt="A real product page built from Atolls components — a discount code listing page" style="display:block;width:100%;height:100%;object-fit:cover;object-position:top">
+    </div>
+    <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--mute);letter-spacing:0.02em;margin-top:11px;line-height:1.5">Patterns — owned by product. A product-specific composition, built from those components.</figcaption>
+  </figure>
+</div>
 <div style="max-width:64ch"><p class="muted">Adoption was led through contribution models, standing design reviews across product teams, and documentation written for designers new to the conventions — not mandates. The same governance model that handled 20% at the start handled 100% at scale, with no central bottleneck.</p></div>
 </div></div>
 
