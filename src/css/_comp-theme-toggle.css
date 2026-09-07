@@ -1,0 +1,42 @@
+@import url(./_theme.css);
+
+/* ---- theme toggle ----
+   Three-way control (auto/light/dark). theme-ls.js sets `color-scheme`
+   on <html>; every token below resolves itself via light-dark(), so no
+   dark-mode override block is needed. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--theme-semantic-spacing-xs);
+  padding: var(--theme-semantic-spacing-xs);
+  border: 1px solid var(--color-br-subtle);
+  border-radius: var(--theme-semantic-shape-radius-sm);
+}
+.theme-toggle label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--theme-semantic-spacing-xl);
+  height: var(--theme-semantic-spacing-xl);
+  border-radius: calc(var(--theme-semantic-shape-radius-sm) / 2);
+  color: var(--color-fg-muted);
+  cursor: pointer;
+}
+.theme-toggle label:hover {
+  color: var(--color-fg-main);
+}
+.theme-toggle input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.theme-toggle label:has(input:checked) {
+  background: var(--comp-chip-color-bg);
+  color: var(--color-fg-emphasis);
+}
+.theme-toggle svg {
+  width: var(--theme-semantic-spacing-lg);
+  height: var(--theme-semantic-spacing-lg);
+}

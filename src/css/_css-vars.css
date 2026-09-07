@@ -6,6 +6,7 @@
   color-scheme: light dark;
   --theme-component-button-background-emphasis: var(--primitives-color-green-400);
   --theme-component-button-background-main: light-dark(var(--primitives-color-neutral-800), var(--primitives-color-neutral-200));
+  --theme-component-button-background-main-hover: light-dark(var(--primitives-color-green-400), var(--primitives-color-green-400));
   --theme-component-button-background-subtle: var(--primitives-color-common-transparent);
   --theme-component-button-border-emphasis: var(--primitives-color-green-400);
   --theme-component-button-border-main: var(--theme-semantic-border-main);
@@ -45,9 +46,9 @@
   --theme-semantic-foreground-emphasis: light-dark(var(--primitives-color-blue-500), var(--primitives-color-blue-400));
   --theme-semantic-foreground-main: light-dark(var(--primitives-color-neutral-800), var(--primitives-color-neutral-200));
   --theme-semantic-foreground-muted: light-dark(var(--primitives-color-neutral-500), var(--primitives-color-neutral-400));
-  --theme-semantic-shape-radius-lg: var(--primitives-radius-300);
-  --theme-semantic-shape-radius-md: var(--primitives-radius-200);
   --theme-semantic-shape-radius-sm: var(--primitives-radius-100);
+  --theme-semantic-shape-radius-md: var(--primitives-radius-200);
+  --theme-semantic-shape-radius-lg: var(--primitives-radius-300);
   --theme-semantic-shape-radius-xl: var(--primitives-radius-400);
   --theme-semantic-shape-width-lg: var(--primitives-dimension-viewport-600);
   --theme-semantic-shape-width-md: var(--primitives-dimension-viewport-400);

@@ -1,0 +1,147 @@
+@import url(./_css-vars.css);
+
+/* ---- tokens ---- */
+:root {
+  --paper: var(--theme-semantic-background-main, #f4f2ec);
+  --ink: var(--theme-semantic-foreground-main, rgb(22, 24, 29));
+  --ink-soft: var(--theme-semantic-foreground-muted, rgb(51, 54, 61));
+  --mute: light-dark(#5e626b, #8b8f98);
+  --line: var(--theme-semantic-border-muted, rgba(22, 24, 29, 0.12));
+  --line2: var(--theme-semantic-border-main, rgba(22, 24, 29, 0.24));
+  --accent: var(--theme-semantic-foreground-emphasis, #2e51ff);
+  --dark: var(--theme-component-footer-background-main, #0d0e12);
+  --green: var(--theme-component-footer-foreground-emphasis, #3fb964);
+  --card: var(--theme-semantic-background-surface, #ffffff);
+  --chip-bg: var(
+    --theme-component-metric-background-main,
+    rgba(22, 24, 29, 0.05)
+  );
+  --header-bg: rgba(from var(--theme-semantic-background-main) r g b / 0.65);
+  --tint: var(--theme-semantic-background-emphasis, rgba(125, 155, 255, 0.12));
+  --band: var(--theme-semantic-background-muted, #efede6);
+
+  --wrap: var(--theme-semantic-shape-width-xl);
+
+  --mono: var(--theme-semantic-font-family-mono);
+  --sans: var(--theme-semantic-font-family-body);
+
+  /* Fixed content colors for the always-dark footer/contact band — these
+     sections don't follow the light/dark toggle, so they can't use the
+     light-dark()-based semantic tokens above. */
+  --on-dark-fg: var(
+    --theme-component-footer-foreground-main,
+    #fff
+  ); /* headings, links on the dark band */
+  --on-dark-fg-soft: #e7e7e3; /* dark-band body text — no matching design token, verify */
+  --on-dark-mute: var(
+    --theme-component-footer-foreground-muted,
+    #9aa0ab
+  ); /* dark-band muted text */
+  --on-dark-mute-2: #7e828c; /* dimmer footer link/label color — no matching design token, verify */
+  --on-dark-border: rgba(255, 255, 255, 0.1); /* dark-band hairline border */
+  --on-dark-border-strong: rgba(
+    255,
+    255,
+    255,
+    0.22
+  ); /* dark-band button border */
+
+  /* Low-opacity accent wash used behind hovered list rows */
+  --accent-wash: color-mix(in srgb, var(--accent) 4.5%, transparent);
+
+  /* Faint hairline for the notebook-grid background — --line itself is
+     opaque, too strong repeated across a whole page, so this dials it back */
+  --grid-line: color-mix(in srgb, var(--line) 35%, transparent);
+
+  /* "tokens.json" mockup card grays — decorative demo content, not linked
+     to the live theme */
+  --mockup-label: #8a8e97; /* tc-group heading / tc-row .hex text */
+  --mockup-arrow: #b9bcc2; /* tc-row .arr separator glyph */
+
+  --btn-green-fg: var(--theme-component-button-foreground-emphasis);
+  --btn-green-hover: var(--theme-component-button-background-emphasis);
+}
+
+/* ---- tokens v2.0 ---- */
+:root {
+  /* Color ------------------*/
+  --color-bg-app: var(--theme-semantic-background-main, #f4f2ec);
+  --color-bg-main: var(--theme-semantic-background-surface, #ffffff);
+  --color-bg-emphasis: var(--theme-semantic-background-emphasis, rgba(125, 155, 255, 0.12));
+  --color-bg-accent: var(--theme-component-footer-foreground-emphasis, #3fb964);
+  --color-fg-main: var(--theme-semantic-foreground-main, rgb(22, 24, 29));
+  --color-fg-subtle: var(--theme-semantic-foreground-muted, rgb(51, 54, 61));
+  --color-fg-muted: light-dark(#5e626b, #8b8f98);
+  --color-fg-emphasis: var(--theme-semantic-foreground-emphasis, #2e51ff);
+  --color-fg-accent: var(--theme-component-footer-foreground-emphasis, #3fb964);
+  --color-br-main: var(--theme-semantic-border-muted, rgba(22, 24, 29, 0.12));
+  --color-br-subtle: var(--theme-semantic-border-main, rgba(22, 24, 29, 0.24));
+  --color-br-muted: color-mix(in srgb, var(--color-br-main) 35%, transparent);
+  --color-br-emphasis: var(--theme-semantic-foreground-emphasis, #2e51ff);
+  --color-br-accent: var(--theme-component-footer-foreground-emphasis, #3fb964);
+
+  /* Font ------------------*/
+  --font-size-3xl: var(--theme-semantic-font-size-3-xl);
+  --font-size-2xl: var(--theme-semantic-font-size-2-xl);
+  --font-size-xl: var(--theme-semantic-font-size-xl);
+  --font-size-lg: var(--theme-semantic-font-size-lg);
+  --font-size-md: var(--theme-semantic-font-size-md);
+  --font-size-sm: var(--theme-semantic-font-size-sm);
+  --font-size-xs: var(--theme-semantic-font-size-xs);
+  --font-size-2xs: var(--theme-semantic-font-size-2-xs);
+  --font-size-3xs: var(--theme-semantic-font-size-3-xs);
+
+  --font-family-mono: var(--mono);
+  --font-family-sans: var(--sans);
+
+  /* Shape ------------------*/
+  --radius-md: var(--theme-semantic-shape-radius-md);
+  --radius-sm: var(--theme-semantic-shape-radius-sm);
+
+  --elevation-low: light-dark(0 20px 50px -28px rgba(22, 24, 29, 0.4), none);
+
+  /* Dimensions ------------------*/
+  --space-4xl: var(--theme-semantic-spacing-4-xl);
+  --space-3xl: var(--theme-semantic-spacing-3-xl);
+  --space-2xl: var(--theme-semantic-spacing-2-xl);
+  --space-xl: var(--theme-semantic-spacing-xl);
+  --space-lg: var(--theme-semantic-spacing-lg);
+  --space-md: var(--theme-semantic-spacing-md);
+  --space-sm: var(--theme-semantic-spacing-sm);
+
+  /* Components -------------------------*/
+  --comp-chip-color-bg: var(
+    --theme-component-metric-background-main,
+    rgba(22, 24, 29, 0.05)
+  );
+  --comp-header-color-bg: rgba(
+    from var(--theme-semantic-background-main) r g b / 0.65
+  );
+  --comp-footer-color-bg: var(
+    --theme-component-footer-background-main,
+    #0d0e12
+  );
+  /** Buttons **/
+  --comp-btn-font-family: var(--font-family-mono);
+  --comp-btn-font-size: var(--font-size-xs);
+  --comp-btn-padding: var(--theme-semantic-spacing-md) var(--theme-semantic-spacing-xl);
+  --comp-btn-radius: var(--radius-sm);
+  --comp-btn-solid-color-fg: var(--theme-component-button-foreground-main);
+  --comp-btn-solid-color-bg: var(--theme-component-button-background-main);
+  --comp-btn-solid-color-br: var(--theme-component-button-border-main);
+  --comp-btn-solid-color-fg-hover: var(--theme-component-button-foreground-main);
+  --comp-btn-solid-color-bg-hover: var(--theme-component-button-background-main-hover);
+  --comp-btn-solid-color-br-hover: var(--theme-component-button-border-main);
+  --comp-btn-ghost-color-fg: var(--theme-component-button-foreground-subtle);
+  --comp-btn-ghost-color-bg: var(--theme-component-button-background-subtle);
+  --comp-btn-ghost-color-br: var(--theme-component-button-border-subtle);
+  --comp-btn-ghost-color-fg-hover: var(--theme-component-button-foreground-subtle);
+  --comp-btn-ghost-color-bg-hover: var(--theme-component-button-background-subtle);
+  --comp-btn-ghost-color-br-hover: var(--theme-component-button-border-subtle);
+  --comp-btn-emphasis-color-fg: var(--theme-component-button-foreground-emphasis);
+  --comp-btn-emphasis-color-bg: var(--theme-component-button-background-emphasis);
+  --comp-btn-emphasis-color-br: var(--theme-component-button-border-emphasis);
+  --comp-btn-emphasis-color-fg-hover: var(--theme-component-button-foreground-emphasis);
+  --comp-btn-emphasis-color-bg-hover: var(--theme-component-button-background-emphasis);
+  --comp-btn-emphasis-color-br-hover: var(--theme-component-button-border-emphasis);
+}

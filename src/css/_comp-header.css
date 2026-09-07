@@ -1,0 +1,66 @@
+@import url(./_theme.css);
+
+/* ---- header / nav ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--comp-header-color-bg);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-br-main);
+}
+.site-header .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
+}
+.brand {
+  text-decoration: none;
+  color: var(--color-fg-main);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+.brand strong {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: var(--font-size-md);
+}
+.brand span {
+  font-family: var(--mono);
+  font-size: var(--font-size-xs);
+  color: var(--mute);
+  letter-spacing: 0.04em;
+}
+.nav {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: center;
+  font-family: var(--mono);
+  font-size: var(--font-size-xs);
+}
+.nav a {
+  color: var(--color-fg-main);
+  text-decoration: none;
+}
+.nav a:hover {
+  color: var(--color-fg-emphasis);
+}
+.nav a[aria-current="page"] {
+  color: var(--color-fg-emphasis);
+}
+.nav .status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-fg-muted);
+}
+.nav .dot {
+  width: var(--space-sm);
+  height: var(--space-sm);
+  border-radius: 50%;
+  background: var(--color-bg-accent);
+}

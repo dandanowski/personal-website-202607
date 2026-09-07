@@ -1,0 +1,34 @@
+
+
+/* ---- layout helpers ---- */
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding-left: var(--space-2xl);
+  padding-right: var(--space-2xl);
+}
+.rule-top {
+  border-top: 1px solid var(--line);
+}
+.rule-bottom {
+  padding-block: var(--space-4xl);
+  border-bottom: 1px solid var(--line);
+  .wrap {
+  }
+}
+.kicker {
+  font-family: var(--mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: var(--space-lg);
+}
+.mono {
+  font-family: var(--mono);
+}
+.section-h {
+  font-size: clamp(var(--font-size-xl), 2.7vw, var(--font-size-2xl));
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--space-sm);
+}

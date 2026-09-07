@@ -1,0 +1,99 @@
+@import url(./_theme.css);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  color: inherit;
+}
+::selection {
+  background: var(--color-bg-emphasis);
+  color: var(--color-fg-emphasis);
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg-app);
+  color: var(--color-fg-main);
+  font-family: var(--font-family-sans);
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+  /* Sticky footer: full-height column so the contact + footer band is
+     pushed to the bottom of the viewport when a page is short on content. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+/* <main> grows to absorb the slack, keeping the contact/footer at the bottom.
+   flex-shrink:0 so tall content is never squashed. */
+main {
+  flex: 1 0 auto;
+}
+
+/* Subtle gridded-notebook texture behind page content. Scoped to <main> —
+   not body — so the translucent header and the always-dark contact/footer
+   band (siblings of <main>, see base.liquid) never show it. Uses --line,
+   so it fades in/out automatically with the light/dark toggle. */
+main {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      var(--color-br-muted) 0 1px,
+      transparent 1px var(--space-xl)
+    ),
+    repeating-linear-gradient(
+      to right,
+      var(--color-br-muted) 0 1px,
+      transparent 1px var(--space-xl)
+    );
+  background-size: var(--space-xl) var(--space-xl);
+}
+
+/* ---- buttons ---- */
+.btn {
+  font-family: var(--comp-btn-font-family);
+  font-size: var(--comp-btn-font-size);
+  text-decoration: none;
+  padding: var(--comp-btn-padding);
+  border-radius: var(--comp-btn-radius);
+  display: inline-block;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.btn--solid {
+  background: var(--comp-btn-solid-color-bg);
+  color: var(--comp-btn-solid-color-fg);
+}
+.btn--solid:hover {
+  background: var(--comp-btn-solid-color-bg-hover);
+}
+.btn--ghost {
+  color: var(--comp-btn-ghost-color-fg);
+  border: 1px solid var(--comp-btn-ghost-color-br);
+}
+.btn--ghost:hover {
+  border-color: var(--comp-btn-ghost-color-br-hover);
+}
+.btn--green,
+.btn--emphasis {
+  background: var(--comp-btn-emphasis-color-bg);
+  color: var(--comp-btn-emphasis-color-fg);
+  font-weight: 500;
+}
+.btn--green:hover,
+.btn--emphasis:hover {
+  background: var(--comp-btn-emphasis-color-bg-hover);
+}
